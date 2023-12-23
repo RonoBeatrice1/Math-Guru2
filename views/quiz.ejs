@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link rel="shortcut icon" href="https://e7.pngegg.com/pngimages/541/631/png-clipart-mathematics-logo-word-problem-algebra-black-dandelion-logo-algebra.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Zeyada&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      } */
+
+      header{
+        text-align: center;
+        font-size: 26px;
+        font-weight: 900;
+      }
+
+      body {
+        background: white;
+        font-family: "Dosis", sans-serif;
+        color: black;
+      }
+
+      .question {
+        margin-top: 20px;
+        background-color: white;
+        padding: 30px;
+      }
+
+      h2{
+        text-align: center;
+        font-size: 26px;
+        font-weight: 900;
+      }
+
+      ul {
+        list-style-type: none;
+        width: 500px;
+        margin: 0;
+        text-align: left;
+      }
+
+      li {
+        position: relative;
+        padding: 10px;
+        padding-left: 40px;
+        height: 30px;
+        margin-bottom: 10px;
+      }
+
+      label {
+        color: black;
+      }
+      label:before {
+        content: "";
+        width: 15px;
+        height: 15px;
+        background: black;
+        position: absolute;
+        left: 7px;
+        top: calc(50% - 13px);
+        box-sizing: border-box;
+        border-radius: 50%;
+      }
+
+      input[type="radio"] {
+        opacity: 0;
+        display: inline-block;
+        vertical-align: middle;
+        z-index: 100;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 30px;
+        position: absolute;
+        left: 0;
+        top: calc(50% - 15px);
+        cursor: pointer;
+      }
+
+      .bullet {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        left: -3px;
+        top: 2px;
+        border: 5px solid black;
+        opacity: 0;
+        border-radius: 50%;
+      }
+
+      input[type="radio"]:checked ~ .bullet {
+        position: absolute;
+        opacity: 1;
+        animation-name: explode;
+        animation-duration: 0.35s;
+      }
+
+      .line {
+        position: absolute;
+        width: 10px;
+        height: 2px;
+        background-color: #fff;
+        opacity: 0;
+      }
+
+      .line.zero {
+        left: 11px;
+        top: -21px;
+        transform: translateY(20px);
+        width: 2px;
+        height: 10px;
+      }
+
+      .line.one {
+        right: -7px;
+        top: -11px;
+        transform: rotate(-55deg) translate(-9px);
+      }
+
+      .line.two {
+        right: -20px;
+        top: 11px;
+        transform: translate(-9px);
+      }
+
+      .line.three {
+        right: -8px;
+        top: 35px;
+        transform: rotate(55deg) translate(-9px);
+      }
+
+      .line.four {
+        left: -8px;
+        top: -11px;
+        transform: rotate(55deg) translate(9px);
+      }
+
+      .line.five {
+        left: -20px;
+        top: 11px;
+        transform: translate(9px);
+      }
+
+      .line.six {
+        left: -8px;
+        top: 35px;
+        transform: rotate(-55deg) translate(9px);
+      }
+
+      .line.seven {
+        left: 11px;
+        bottom: -21px;
+        transform: translateY(-20px);
+        width: 2px;
+        height: 10px;
+      }
+
+      .submit-btn {
+        height: 4em;
+        width: 130px;
+        padding: 1.5em auto;
+        margin: 1em auto;
+        background-color: black;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.5em;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+      }
+      
+    </style>
+  </head>
+  <c>
+    <header>
+      <!-- <h1>Quiz Level</h1> -->
+      <p>Course: <%= courseName %></p>
+      <p>Level: <%= levelName %></p>
+    </header>
+    <main>
+      <form id="quizForm" action="/score" method="POST">
+        <section class="questions">
+          <h2>Questions</h2>
+          <% questions.forEach((question, index) => { %>
+          <div class="question">
+            <p><%= index + 1 %>. <%= question.question_text %></p>
+            <ul class="options">
+              <% question.options.forEach((option, optionIndex) => { %>
+              <li
+                data-question="<%= index %>"
+                data-option="<%= optionIndex %>"
+                class="option"
+              >
+                <input
+                  type="radio"
+                  id="rd_<%= optionIndex %>"
+                  name="question_<%= index %>"
+                  value="<%= option.option_text %>"
+                />
+                <label for="rd_<%= optionIndex %>"
+                  ><%= option.option_text %></label
+                >
+                <div class="bullet"></div>
+              </li>
+              <% }) %>
+            </ul>
+          </div>
+          <% }) %>
+        </section>
+
+        <a href="/score?courseId=<%= courseId %>"
+          ><button class="submit-btn hidden" id="submit">Submit</button></a
+        >
+      </form>
+    </main>
+    <script>
+      window.onload = function () {
+        const options = document.querySelectorAll(".option");
+    
+        options.forEach((option) => {
+          option.addEventListener("click", () => {
+            const selectedOption = option.querySelector("input[type='radio']:checked");
+            if (selectedOption) {
+              const submitButton = document.getElementById("submit");
+              submitButton.classList.remove("hidden");
+            }
+          });
+        });
+    
+        document.getElementById("quizForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+
+  fetch("/submit-quiz", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      const urlParams = new URLSearchParams(window.location.search);
+      const courseId = urlParams.get("courseId");
+      window.location.href = "/score"; 
+    })
+    .catch((error) => {
+      console.error("Error submitting quiz:", error);
+    });
+});
+      };
+    </script>
+    
+  </body>
+</html>

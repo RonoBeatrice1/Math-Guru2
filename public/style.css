@@ -1,0 +1,956 @@
+* {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Dosis", sans-serif;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.logo-image {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.logo-text {
+  font-family: "Zeyada", cursive;
+  font-weight: 900;
+  color: darkred;
+  margin-top: 15px;
+  margin-bottom: 0;
+  font-size: 40px;
+  line-height: 1;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 20px;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+  text-decoration-color: darkred;
+}
+
+.sign-up-button {
+  margin-right: 30px;
+  padding: 15px 25px;
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: darkred;
+  margin-right: 30px;
+}
+
+/* info */
+
+#typed {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+  margin-top: 20px;
+}
+
+.info-container {
+  width: 1170px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: auto;
+}
+
+.sub-info-container .info {
+  width: 35%;
+  float: left;
+  margin-top: 130px;
+}
+
+.sub-info-container .info h1 {
+  font-size: 44px;
+  margin: 0 0 20px;
+  line-height: 1.4;
+  color: darkred;
+}
+
+.sub-info-container .info p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 15px;
+  color: black;
+}
+
+.sub-info-container .info button {
+  border: 0;
+  border-radius: 30px;
+  padding: 18px 40px;
+  margin-top: 25px;
+  cursor: pointer;
+  color: #fff;
+  background-color: darkred;
+}
+
+.info-container .image {
+  width: 50%;
+  float: right;
+  margin-top: 35px;
+}
+
+.info-container .image img {
+  max-width: 100%;
+}
+
+.clearfix {
+  clear: both;
+}
+
+/* Courses */
+
+.Courses-offered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Courses {
+  width: 1500px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Courses .card {
+  position: relative;
+  cursor: pointer;
+}
+
+.Courses .card .face {
+  width: 300px;
+  height: 200px;
+  transition: 0.5s;
+}
+
+.Courses .card .face.face1 {
+  position: relative;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transform: translateY(100px);
+}
+
+.Courses .card:hover .face.face1 {
+  background: darkred;
+  transform: translateY(0);
+}
+
+.Courses .card .face.face1 .content {
+  opacity: 0.2;
+  transition: 0.5s;
+}
+
+.Courses .card:hover .face.face1 .content {
+  opacity: 1;
+}
+
+.Courses .card .face.face1 .content img {
+  max-width: 100px;
+}
+.Courses .card .face.face1 .content h3 {
+  margin: 10px 0 0;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.Courses .card .face.face2 {
+  position: relative;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  transform: translateY(-100px);
+}
+
+.Courses .card:hover .face.face2 {
+  transform: translateY(0);
+}
+
+.Courses .card .face.face2 .content p {
+  margin: 0;
+  padding: 0;
+}
+
+.Courses .card .face.face2 .content a {
+  margin: 15px 0 0;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 900;
+  color: white;
+  background-color: black;
+  padding: 8px;
+  border: 1px solid;
+}
+
+.Courses .card .face.face2 .content a:hover {
+  background: darkred;
+  color: #fff;
+}
+
+/* benefits */
+.benefits {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefits .banner {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.benefits .banner h1 {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.benefits table {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefits table td {
+  width: 30%;
+  padding: 1%;
+}
+
+.benefits table td ul li {
+  list-style: none;
+  padding: 10px 0px;
+}
+
+.benefits table td ul li a {
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.benefits table td ul li a:hover {
+  color: darkred;
+}
+
+.benefits table td ul li h3 {
+  color: darkred;
+  font-size: 20px;
+}
+
+.benefits table td ul li p {
+  font-size: 16px;
+  color: black;
+  font-weight: 600;
+}
+
+.benefits table td:nth-child(1) ul {
+  text-align: right;
+}
+
+.slick table td:nth-child(3) ul {
+  text-align: left;
+}
+
+.benefits table td:nth-child(2) .card {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefits .card {
+  position: relative;
+  width: 90%;
+  height: 80vh;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.benefits .card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 900;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* testimonials */
+img {
+  max-width: 100%;
+}
+
+.testimonials {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+}
+
+.container {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 15px 0px;
+}
+
+.title h2 {
+  font-size: 50px;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+
+.title .underline {
+  width: 100px;
+  height: 4px;
+  background-color: darkred;
+  margin: 0 auto;
+}
+
+.review {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.05);
+}
+
+#person-img {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0px 0px 6px 1px darkred;
+}
+
+#author {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+
+#job {
+  text-transform: uppercase;
+  line-height: 150%;
+  margin-bottom: 10px;
+  color: darkred;
+  font-weight: 900;
+}
+
+#info {
+  height: 100px;
+  font-size: 18px;
+  color: black;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.btn {
+  text-decoration: none;
+  border-style: none;
+  background-color: #fff;
+  font-size: 30px;
+  margin: 0 10px;
+  color: darkred;
+  cursor: pointer;
+}
+
+/* footer */
+#footer {
+  font-family: "Dosis", sans-serif;
+  width: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+h3.left {
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-align: left;
+}
+
+h3.center {
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.about ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.card-f ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.about,
+.card-f li {
+  color: black;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 22px;
+  list-style-type: none;
+  text-align: left;
+}
+
+#utility-links {
+  width: 50%;
+  height: 150px;
+  background-color: #fff;
+  margin: 40px auto 0 auto;
+}
+
+.rectangle {
+  width: 1px;
+  height: 100px;
+  background: #d8d8d8;
+  margin: 0 30px 0 0;
+  float: left;
+  display: block;
+}
+
+.help {
+  width: 30%;
+  height: 100px;
+  float: left;
+  margin: 0;
+  display: block;
+}
+
+.help-img-icon {
+  float: left;
+  margin: 0 5px 0 0;
+}
+
+.about {
+  width: 30%;
+  height: 100px;
+  float: left;
+  margin: 0;
+  display: block;
+}
+
+.card-f {
+  width: 30%;
+  height: 100px;
+  float: left;
+  margin: 0;
+  display: block;
+}
+
+#newsletter-social {
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#social {
+  width: 35%;
+  margin: 80px 0 0 0;
+  display: inline;
+  padding-right: 50px;
+}
+
+/* Copyright Styling */
+
+/* .rectangle-horiz {
+    width: 100%;
+    height: 2px;
+    background: #d8d8d8;
+    margin: 170px 0 0 0;
+  } */
+
+#copyright {
+  font-family: Mallory, Sans-Serif;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.copy {
+  color: black;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  margin-left: 20px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+a:link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:visited {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: darkred;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:active {
+  color: darkred;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Media Queries */
+
+/* Mobile */
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 24px;
+    margin-top: 5px;
+  }
+
+  .logo-image {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+  }
+
+  .sign-up-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-right: 0;
+  }
+
+  header {
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+  }
+
+  .logo {
+    margin-left: 0;
+  }
+
+  .info-container {
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .sub-info-container .info {
+    width: 100%;
+    float: none;
+    margin-top: 50px;
+  }
+
+  .sub-info-container .info h1 {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  .sub-info-container .info p {
+    font-size: 14px;
+  }
+
+  .sub-info-container .info button {
+    padding: 14px 30px;
+    margin-top: 20px;
+  }
+
+  .info-container .image {
+    width: 100%;
+    float: none;
+    margin-top: 20px;
+  }
+
+  .Courses {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-left: 45px; */
+  }
+
+  .Courses .card {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-left: 30px;
+  }
+
+  .Courses .card .face.face1 {
+    background: darkred;
+    transform: none;
+  }
+
+  .Courses .card:hover .face.face1 {
+    background: black;
+  }
+
+  .Courses .card .face.face1 .content {
+    opacity: 1;
+  }
+
+  .Courses .card .face.face2 {
+    transform: none;
+  }
+
+  .Courses .card:hover .face.face2 {
+    transform: none;
+  }
+
+  /* .benefits {
+      display: block;
+    }
+  
+    .benefits table {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .benefits table {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    } */
+
+  .benefits {
+    width: 90%;
+    margin: auto;
+  }
+
+  .benefits .banner h1 {
+    font-size: 24px;
+  }
+
+  .benefits table td {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .benefits table td ul li h3 {
+    font-size: 18px;
+  }
+
+  .benefits table td ul li p {
+    font-size: 14px;
+  }
+
+  .benefits table td:nth-child(1) ul {
+    text-align: left;
+  }
+
+  .slick table td:nth-child(3) ul {
+    text-align: left;
+  }
+
+  .benefits table td:nth-child(2) .card {
+    margin: 0 auto;
+  }
+
+  .benefits .card {
+    width: 100%;
+    height: auto;
+  }
+
+  .benefits .card::after {
+    display: none;
+  }
+
+  h3.left,
+  h3.center {
+    font-size: 14px;
+  }
+
+  .rectangle {
+    display: none;
+  }
+
+  #utility-links {
+    width: 90%;
+    height: auto;
+    margin: 20px auto 0 auto;
+  }
+
+  .help,
+  .about,
+  .card-f {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  #social {
+    margin: 20px 0 0 0;
+    padding-right: 0;
+  }
+}
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 1024px) {
+  .logo-text {
+    font-size: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .logo-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+  }
+
+  .sign-up-button {
+    padding: 12px 22px;
+    font-size: 15px;
+    margin-right: 0;
+  }
+
+  .info-container {
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .sub-info-container .info {
+    width: 50%;
+    margin-top: 80px;
+  }
+
+  .sub-info-container .info h1 {
+    font-size: 36px;
+  }
+
+  .sub-info-container .info p {
+    font-size: 14px;
+  }
+
+  .sub-info-container .info button {
+    padding: 16px 35px;
+    margin-top: 20px;
+  }
+
+  .info-container .image {
+    width: 50%;
+    margin-top: 20px;
+  }
+
+  .Courses {
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+    justify-content: center;
+    margin-top: 40px;
+    margin-left: 70px;
+  }
+
+  .Courses .card {
+    width: calc(50% - 10px);
+    margin: 0 10px 20px;
+  }
+
+  .Courses .card .face.face1 {
+    background: darkred;
+    transform: none;
+  }
+
+  .Courses .card:hover .face.face1 {
+    background: black;
+  }
+
+  .Courses .card .face.face1 .content {
+    opacity: 1;
+  }
+
+  .Courses .card .face.face2 {
+    transform: none;
+  }
+
+  .Courses .card:hover .face.face2 {
+    transform: none;
+  }
+
+  .benefits {
+    width: 90%;
+    margin: auto;
+  }
+
+  .benefits .banner h1 {
+    font-size: 24px;
+  }
+
+  .benefits table td {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .benefits table td ul li h3 {
+    font-size: 18px;
+  }
+
+  .benefits table td ul li p {
+    font-size: 14px;
+  }
+
+  .benefits table td:nth-child(1) ul {
+    text-align: left;
+  }
+
+  .slick table td:nth-child(3) ul {
+    text-align: left;
+  }
+
+  .benefits table td:nth-child(2) .card {
+    margin: 0 auto;
+  }
+
+  .benefits .card {
+    width: 100%;
+    height: auto;
+  }
+
+  .benefits .card::after {
+    display: none;
+  }
+
+  #footer {
+    text-align: center;
+  }
+
+  #utility-links {
+    width: 100%;
+    height: auto;
+    margin: 20px auto 0 auto;
+  }
+
+  .rectangle {
+    display: none;
+  }
+
+  .help,
+  .about,
+  .card-f {
+    width: 100%;
+    float: none;
+    margin-bottom: 20px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+  .logo-text {
+    font-size: 40px;
+  }
+
+  .logo-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .sign-up-button {
+    padding: 15px 25px;
+    font-size: 18px;
+    margin-right: 20px;
+  }
+
+  .info-container {
+    width: 1170px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .sub-info-container .info {
+    width: 35%;
+    margin-top: 130px;
+  }
+
+  .sub-info-container .info h1 {
+    font-size: 44px;
+    margin: 0 0 20px;
+    line-height: 1.4;
+  }
+
+  .sub-info-container .info p {
+    font-size: 15px;
+  }
+
+  .sub-info-container .info button {
+    padding: 18px 40px;
+    margin-top: 25px;
+  }
+
+  .info-container .image {
+    width: 50%;
+    margin-top: 35px;
+  }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Score</title>
+  </head>
+  <body>
+    <h1>Your Quiz Score</h1>
+    <p>Your score is: <%= score %></p>
+
+    <h2>Questions and Answers</h2>
+    <ul>
+      <% questions.forEach((question, index) => { %>
+      <li>
+        <%= index + 1 %>. <%= question.question_text %>
+        <ul>
+          <% question.options.forEach((option, optionIndex) => { %>
+          <li>
+            <%= optionIndex + 1 %>. <%= option.option_text %> <% if
+            (userAnswers[index] === option.option_text) { %>
+            <span style="color: green">(Your Answer)</span>
+            <% } else if (correctAnswers[index] === option.option_text) { %>
+            <span style="color: red">(Correct Answer)</span>
+            <% } %>
+          </li>
+          <% }) %>
+        </ul>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

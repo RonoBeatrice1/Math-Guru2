@@ -1,0 +1,1319 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Our Courses/Programs Page</h1>
+    <p>Here are the available courses/programs:</p>
+    <ul>
+      <% courses.forEach(function(course) { %>
+      <li><%= course.name %></li>
+      <% }); %>
+    </ul>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses</title>
+    <link rel="shortcut icon" href="https://e7.pngegg.com/pngimages/541/631/png-clipart-mathematics-logo-word-problem-algebra-black-dandelion-logo-algebra.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Zeyada&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/24b7b4270b.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body{
+        font-family: "Dosis", sans-serif;
+      }
+
+      /* header */
+      .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 40px;
+        margin-left: 30px;
+      }
+
+      .logo-image {
+        margin-right: 10px;
+        width: 50px;
+        height: 50px;
+      }
+
+      .logo-text {
+        font-family: "Zeyada", cursive;
+        font-weight: 900;
+        color: darkred;
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-size: 40px;
+        line-height: 1;
+      }
+
+      .container {
+        width: 60%;
+        margin: 3em auto;
+        display: grid;
+        grid: 1fr / repeat(4, 1fr);
+        gap: 1%;
+        list-style: none;
+      }
+
+      .nav__pointer {
+        color: #8093a7;
+        font-family: "Dosis", sans-serif;
+        font-size: 1.2em;
+        font-weight: 600;
+        text-decoration: none;
+        height: 80px;
+        position: relative;
+        background: #f3f5fa;
+        display: grid;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav__pointer span {
+        color: black;
+      }
+
+      .nav__pointer i {
+        margin-right: 0.5em;
+      }
+      .nav__pointer:before {
+        content: "";
+        position: absolute;
+        left: 0px;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-left: 30px solid white;
+        border-top: 40px solid transparent;
+        border-bottom: 40px solid transparent;
+      }
+      .nav__pointer:after {
+        content: "";
+        position: absolute;
+        right: -29px;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-left: 30px solid #f3f5fa;
+        border-top: 40px solid transparent;
+        border-bottom: 40px solid transparent;
+        z-index: 1;
+      }
+
+      .nav__pointer--first:before {
+        border-left: none;
+      }
+
+      .nav__pointer--first {
+        border-bottom-left-radius: 16px;
+        border-top-left-radius: 16px;
+      }
+
+      .nav__pointer--last:after,
+      .nav__pointer--last:after,
+      .nav__pointer--last:hover,
+      .nav__pointer--last:after,
+      .nav__pointer--last:hover:after,
+      .nav_pointer--last.nav_pointer--current:after,
+      .nav__pointer--last.nav__pointer--current:hover,
+      .nav__pointer--last.nav__pointer--current:hover:after {
+        border-left: none;
+      }
+
+      .nav__pointer--last {
+        border-bottom-right-radius: 16px;
+        border-top-right-radius: 16px;
+      }
+      .nav__pointer--current,
+      .nav__pointer:hover {
+        background: darkred;
+        color: #fff;
+      }
+
+      .nav__pointer--current:after,
+      .nav__pointer:hover:after {
+        border-left: 30px solid darkred;
+      }
+
+      /* Courses */
+
+.title_header{
+width:60%;
+text-align:Center;
+margin:auto;
+color:var(--white);
+}
+
+.title_header h1{
+font-size:2em;
+}
+
+.title_header h4{
+font-weight:200;
+}
+
+.title_header .bar{
+margin:auto;
+}
+
+.section1{
+width:100%;
+padding:4rem 2rem;
+background-color:#fff;
+}
+
+.section1 section{
+display:flex;
+align-items:center;
+justify-content:Center;
+}
+
+.section1 .card{
+padding:3rem;
+position:relative;
+width:50%;
+border-radius:10px;
+margin:30px;
+background-color: white;
+text-align:center;
+box-shadow:0px 1px 2px -1px darkred;
+transition:0.5s;
+}
+
+.section1 .card:hover{
+box-shadow:0px 4px 14px -4px black;
+}
+
+.section1 .card .tag{
+position:absolute;
+background-color:var(--lite);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:10px;
+border-radius:50%;
+position:absolute;
+top:2%;
+right:2%;
+}
+
+.section1 .card h1{
+  color: darkred;
+font-size:1.5em;
+}
+
+.section1 .card p{
+color: black;
+font-weight: 500;
+line-height:1.8em;
+}
+
+.view-path-button {
+  padding: 15px 25px;
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: black;
+  margin-top: 20px;
+ 
+}
+
+.course{
+margin: 2%;
+margin-left: 50px;
+}
+
+.course h2{
+  text-align: center;
+  font-size: 30px;
+  color: black;
+  font-weight: 900;
+}
+
+.card{
+    width: 20%;
+    display: inline-block;
+    box-shadow: 2px 2px 20px black;
+    border-radius: 5px; 
+    margin: 3%;
+    margin-left: 90px;
+   }
+
+   .course .card:hover{
+    background: gray;
+    opacity: 1;
+	  transition: .3s ease-in-out;
+    opacity: .5;
+   }
+
+.image img{
+ width: 100%;
+ border-top-right-radius: 5px;
+ border-top-left-radius: 5px;
+ 
+
+
+}
+
+.title{
+
+ text-align: center;
+ padding: 10px;
+ 
+}
+
+h1{
+ font-size: 20px;
+ color: black;
+}
+
+.des{
+  color: black;
+ padding: 3px;
+ text-align: center;
+margin-bottom: 15px;
+ padding-top: 10px;
+ border-bottom-right-radius: 5px;
+ border-bottom-left-radius: 5px;
+}
+button{
+ margin-top: 40px;
+ margin-bottom: 10px;
+ background-color: white;
+ border: 1px solid black;
+ border-radius: 5px;
+ padding:10px;
+}
+button:hover{
+ background-color: black;
+ color: white;
+ transition: .5s;
+ cursor: pointer;
+}
+
+/* footer */
+#footer {
+  font-family: "Dosis", sans-serif;
+  width: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+h3.left {
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-align: left;
+}
+
+h3.center {
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.about ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.card-f ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.about,
+.card-f li {
+  color: black;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 22px;
+  list-style-type: none;
+  text-align: left;
+}
+
+#utility-links {
+  width: 50%;
+  height: 150px;
+  background-color: #fff;
+  margin: 40px auto 0 auto;
+}
+
+.rectangle {
+  width: 1px;
+  height: 100px;
+  background: #d8d8d8;
+  margin: 0 30px 0 0;
+  float: left;
+  display: block;
+}
+
+.help {
+  width: 30%;
+  height: 100px;
+  float: left;
+  margin: 0;
+  display: block;
+}
+
+.help-img-icon {
+  float: left;
+  margin: 0 5px 0 0;
+}
+
+.about {
+  width: 30%;
+  height: 100px;
+  float: left;
+  margin: 0;
+  display: block;
+}
+
+.card-f {
+  width: 30%;
+  height: 100px;
+  float: left;
+  margin: 0;
+  display: block;
+}
+
+#newsletter-social {
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#social {
+  width: 35%;
+  margin: 80px 0 0 0;
+  display: inline;
+  padding-right: 50px;
+}
+
+/* Copyright Styling */
+
+/* .rectangle-horiz {
+    width: 100%;
+    height: 2px;
+    background: #d8d8d8;
+    margin: 170px 0 0 0;
+  } */
+
+#copyright {
+  font-family: Mallory, Sans-Serif;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.copy {
+  color: black;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  margin-left: 20px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+a:link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:visited {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: darkred;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:active {
+  color: darkred;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* video */
+.video{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.video-container {
+      max-width: 90%;
+      position: relative;
+      /* padding-bottom: 56.25%; 16:9 aspect ratio (height / width) */
+      padding-bottom: 50px;
+    }
+
+    .youtube-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Mobile Styles (320px to 480px) */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  header{
+  font-size: 20px;
+}
+
+  .logo {
+    padding-top: 30px;
+    margin-left: 10px;
+  }
+
+  .logo-image {
+    width: 60px;
+    height: 60px;
+    margin-right: 8px;
+  }
+
+  .logo-text {
+    font-size: 40px;
+  }
+
+  .container {
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10%;
+    margin-left: 10%;
+  }
+
+  .nav__pointer {
+    height: 60px;
+    font-size: 1em;
+    justify-content: flex-start; 
+    padding-left: 20px; 
+  }
+
+ 
+  .nav__pointer:before {
+    left: -10px;
+    border-left: 30px solid white;
+  }
+
+  .nav__pointer--first:before {
+    border-left: none;
+  }
+
+  .nav__pointer--current,
+  .nav__pointer:hover {
+    background: white;
+    color: #fff;
+    justify-content: flex-start; 
+    padding-left: 20px; 
+  }
+
+  .nav__pointer--current:after,
+  .nav__pointer:hover:after {
+    border-left: 30px solid white;
+  }
+
+  .title_header {
+    width: 40%;
+    font-size: 1em;
+    text-decoration: underline;
+  }
+
+  .section1 {
+    padding: 2rem 1rem;
+  }
+
+  .section1 section {
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+  }
+
+  .card {
+    flex-basis: calc(50% - 30px); 
+    margin: 15px;
+    margin-left: 80px;
+  }
+
+  .view-path-button {
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  border-radius: 40px;
+  cursor: pointer;
+  background-color: black;
+  margin-top: 20px;
+}
+
+.video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .video-container {
+    max-width: 90%;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (height / width) */
+  }
+
+  .youtube-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+ 
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+header{
+  font-size: 30px;
+}
+
+  .logo {
+    padding-top: 30px;
+    margin-left: 30px;
+  }
+
+  .logo-image {
+    width: 45px;
+    height: 45px;
+    margin-right: 8px;
+  }
+
+  .logo-text {
+    font-size: 35px;
+  }
+
+  .container {
+    margin-left: 20%;
+    width: 90%; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 5%; 
+  }
+
+  .nav__pointer {
+    height: 60px;
+    font-size: 1em;
+    justify-content: flex-start; 
+    padding-left: 20px; 
+  }
+
+  
+  .nav__pointer:before {
+    left: -10px;
+    border-left: 30px solid white;
+  }
+
+  .nav__pointer--current,
+  .nav__pointer:hover {
+    background: white;
+    color: #fff;
+    justify-content: flex-start; 
+    padding-left: 20px; 
+  }
+
+  .nav__pointer--current:after,
+  .nav__pointer:hover:after {
+    border-left: 30px solid white;
+  }
+
+  .title_header {
+    width: 40%;
+    font-size: 1em;
+    text-decoration: underline;
+  }
+
+  .section1 {
+    padding: 3rem 1rem;
+  }
+
+  .section1 section {
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+  }
+
+  .card {
+    flex-basis: calc(50% - 30px);
+  }
+
+  .video-container {
+    max-width: 80%;
+    padding-bottom: 56.25%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 40px;
+        margin-left: 30px;
+      }
+
+      .logo-image {
+        margin-right: 10px;
+        width: 50px;
+        height: 50px;
+      }
+
+      .logo-text {
+        font-family: "Zeyada", cursive;
+        font-weight: 900;
+        color: darkred;
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-size: 40px;
+        line-height: 1;
+      }
+
+      .container {
+        width: 80%;
+        margin: 3em auto;
+        display: grid;
+        grid: 1fr / repeat(4, 1fr);
+        gap: 1%;
+        list-style: none;
+      }
+
+      .nav__pointer {
+        color: #8093a7;
+        font-family: "Dosis", sans-serif;
+        font-size: 1.2em;
+        font-weight: 600;
+        text-decoration: none;
+        height: 80px;
+        position: relative;
+        background: #f3f5fa;
+        display: grid;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav__pointer span {
+        color: black;
+      }
+
+      .nav__pointer i {
+        margin-right: 0.5em;
+      }
+      .nav__pointer:before {
+        content: "";
+        position: absolute;
+        left: 0px;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-left: 30px solid white;
+        border-top: 40px solid transparent;
+        border-bottom: 40px solid transparent;
+      }
+      .nav__pointer:after {
+        content: "";
+        position: absolute;
+        right: -29px;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-left: 30px solid #f3f5fa;
+        border-top: 40px solid transparent;
+        border-bottom: 40px solid transparent;
+        z-index: 1;
+      }
+
+      .nav__pointer--first:before {
+        border-left: none;
+      }
+
+      .nav__pointer--first {
+        border-bottom-left-radius: 16px;
+        border-top-left-radius: 16px;
+      }
+
+      .nav__pointer--last:after,
+      .nav__pointer--last:after,
+      .nav__pointer--last:hover,
+      .nav__pointer--last:after,
+      .nav__pointer--last:hover:after,
+      .nav_pointer--last.nav_pointer--current:after,
+      .nav__pointer--last.nav__pointer--current:hover,
+      .nav__pointer--last.nav__pointer--current:hover:after {
+        border-left: none;
+      }
+
+      .nav__pointer--last {
+        border-bottom-right-radius: 16px;
+        border-top-right-radius: 16px;
+      }
+      .nav__pointer--current,
+      .nav__pointer:hover {
+        background: darkred;
+        color: #fff;
+      }
+
+      .nav__pointer--current:after,
+      .nav__pointer:hover:after {
+        border-left: 30px solid darkred;
+      }
+      .title_header {
+    width: 40%;
+    font-size: 1em;
+    text-decoration: underline;
+  }
+
+  .section1 {
+    padding: 3rem 1rem;
+  }
+
+  .section1 .cards-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card {
+    flex-basis: calc(25% - 30px);
+  }
+  .video-container {
+    max-width: 70%;
+    padding-bottom: 56.25%;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img class="logo-image" src="/Images/logarithm.png" alt="image" />
+        <h1 class="logo-text">MathGuru</h1>
+      </div>
+
+      <div class="bars">
+        <ul class="container">
+          <li>
+            <a href="/subscription" class="nav__pointer"
+              ><i class="fa-solid fa-credit-card" style="color: #030303;"></i><span>Subscription</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav__pointer breadcrumbs__pointer--first"
+              ><i class="fa-solid fa-user" style="color: #050505"></i
+              ><span>Profile</span></a
+            >
+          </li>
+          <li>
+            <a href="/faq" class="nav__pointer"
+              ><i class="fa-solid fa-circle-info" style="color: #050505"></i
+              ><span>Help</span></a
+            >
+          </li>
+
+          <li>
+            <a
+              href="/logout"
+              class="nav__pointer nav__pointer--last nav__pointer--current"
+              ><i class="fas fa-sign-out-alt" style="color: #070808"></i
+              ><span>Log-out</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="section1">
+      <div class="title_header">
+        <h1>Course catalog</h1>
+        <span class="bar"></span>
+      </div>
+      <section>
+        <div class="card">
+          <span class="tag">01</span>
+          <h1>Calculus &nbsp</h1>
+          <p>
+            Differentiation, integration, limits, functions - MathGuru makes calculus concepts crystal clear.
+          </p>
+          <a href="/course/calculus"><button class="view-path-button">View Path</button></a>
+        </div>
+        <div class="card">
+          <span class="tag">02</span>
+          <h1>Probability and Statistics</h1>
+          <p>
+            Data analysis, inference, uncertainty, probability, statistics - MathGuru teaches it all.
+          </p>
+          <a href="/course/probability and statistics"><button class="view-path-button">View Path</button></a>
+        </div>
+        <div class="card">
+          <span class="tag">03</span>
+          <h1>Vector <br> Analysis</h1>
+          <p>
+            MathGuru simplifies vector operations and applications in physics and engineering.
+          </p>
+          <a href="/course/vector analysis"><button class="view-path-button">View Path</button></a>
+        </div>
+        <div class="card">
+          <span class="tag">04</span>
+          <h1>Algebraic Structures</h1>
+          <p>
+            We explores abstract algebraic structures with clarity and practical examples.
+          </p>
+          <a href="/course/algebraic structures"><button class="view-path-button">View Path</button></a>
+        </div>
+      </section>
+    </section>
+
+
+  <section class="video">
+    <figure class="video-container">
+     
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/-gfUL0mLu2Y" title="YouTube video player"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </figure>
+  </section>
+            <footer id="footer">
+              <div id="utility-links">
+            
+               <div class="help">
+               <ul>
+                 <h3 class="left">About Us</h3>
+                 <p>MathGuru: Your trusted source for quality math education. Join us and excel in math with confidence!</p>
+                 </div>
+             
+              
+                <div class="rectangle"></div>
+            
+               <div class="about">
+                    <ul>
+                      <h3 class="left">Company</h3>
+                      <li><a href="/">Home</a></li>
+                      <li><a href="/courses">Courses</a></li>
+                      <li><a href="/faq">FAQs</a></li>
+                      <li><a href="/subscription">Subscriptions</a></li>
+                   </ul>
+                   </div>
+              
+                <div class="rectangle"></div>
+              
+              <div class="card-f">
+                    <ul>
+                      <h3 class="left">Products</h3>
+                      <li><a href="#">Programs</a></li>
+                      <li><a href="#">Testimonials</a></li>
+                   </ul>
+               </div>
+            </div>  
+              
+            <div id="newsletter-social">      
+             <div id="social">
+                <a href="#" target="_blank">
+                <img width="34" height="34" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"></a></img>
+            
+                <a href="#" target="_blank">
+                <img width="34" height="34" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469457641/twitter_fu5ejk.svg"></a></img>
+            
+                <a href="#" target="_blank">
+                <img width="34" height="34" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469457641/pinterest_kahh1i.svg"></a></img>
+            
+                <a href="#" target="_blank">
+                <img width="34" height="34" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469457641/youtube_xrntt3.svg"></a></img>
+            
+                <a href="#" target="_blank">
+                <img width="34" height="34" src="https://cdn.pixabay.com/photo/2016/08/09/17/52/instagram-1581266_640.jpg"></a></img>
+            
+              </div>  
+            </div>  
+                 
+            <div class="rectangle-horiz"></div>
+            
+            <div id="copyright">
+            <ul>
+              <li class="copy">© 2023 MathGuru All Rights Reserved.</li>
+            
+              <li class="copy">Privacy Policy | Terms + Conditions </li>
+              
+            </div> 
+            </footer>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+	const videoContainers = document.querySelectorAll(".video-container");
+
+	videoContainers.forEach((videoContainer) => {
+		const video = videoContainer.querySelector("video");
+		const timestamp = videoContainer.querySelector(".timestamp");
+		const playPauseBtn = videoContainer.querySelector(".toggle-play-pause");
+		const fullscreenBtn = videoContainer.querySelector(".toggle-fullscreen");
+		const pictureInPictureBtn = videoContainer.querySelector(
+			".toggle-picture-in-picture"
+		);
+		const airplayBtn = videoContainer.querySelector(".toggle-airplay");
+		const chromecastBtn = videoContainer.querySelector(".toggle-chromecast");
+		const bufferedBar = videoContainer.querySelector(".buffered-amount-bar");
+		const progressBar = videoContainer.querySelector(".current-progress-bar");
+		const progressContainer = videoContainer.querySelector(
+			".progress-bar-container"
+		);
+		const volumeContainer = videoContainer.querySelector(".volume-container");
+		const volumeSlider = volumeContainer.querySelector(".volume-slider");
+		const volumeLine = volumeSlider.querySelector(".line");
+		const toggleVolumeBtn = volumeContainer.querySelector(".toggle-volume");
+
+		let isDragging = false;
+		let isDraggingVolume = false;
+
+		video.addEventListener("loadedmetadata", () =>
+			updateTimestamp(video, timestamp)
+		);
+		video.addEventListener("timeupdate", () => {
+			updateProgressBar(video, progressBar);
+			updateTimestamp(video, timestamp);
+		});
+		video.addEventListener("progress", () =>
+			updateBufferedBar(video, bufferedBar)
+		);
+
+		progressContainer.addEventListener("mousedown", () => (isDragging = true));
+		progressContainer.addEventListener("mouseup", () => (isDragging = false));
+		progressContainer.addEventListener("mousemove", (event) =>
+			setVideoTime(video, progressContainer, progressBar, event, isDragging)
+		);
+		progressContainer.addEventListener("click", (event) =>
+			setVideoTime(video, progressContainer, progressBar, event, isDragging)
+		);
+
+		playPauseBtn.addEventListener("click", () =>
+			togglePlayPause(video, playPauseBtn)
+		);
+		video.addEventListener("click", () => togglePlayPause(video, playPauseBtn));
+
+		volumeSlider.addEventListener("mousedown", () => (isDraggingVolume = true));
+		document.addEventListener("mouseup", () => (isDraggingVolume = false));
+		document.addEventListener("mousemove", (event) => {
+			if (isDraggingVolume) {
+				updateVolume(video, volumeSlider, volumeLine, event);
+			}
+		});
+		volumeSlider.addEventListener("click", (event) =>
+			updateVolume(video, volumeSlider, volumeLine, event)
+		);
+
+		toggleVolumeBtn.addEventListener("click", () =>
+			toggleVolume(video, toggleVolumeBtn)
+		);
+
+		let sliderTimer;
+
+		volumeContainer.addEventListener("mouseenter", () => {
+			clearTimeout(sliderTimer);
+			volumeSlider.classList.add("show-slider");
+		});
+
+		volumeContainer.addEventListener("mouseleave", () => {
+			if (!isDraggingVolume) {
+				sliderTimer = setTimeout(() => {
+					volumeSlider.classList.remove("show-slider");
+				}, 300);
+			}
+		});
+
+		document.addEventListener("mouseup", () => {
+			isDraggingVolume = false;
+
+			if (!isMouseOverVolumeSlider(volumeSlider)) {
+				sliderTimer = setTimeout(() => {
+					volumeSlider.classList.remove("show-slider");
+				}, 300);
+			}
+		});
+
+		function isMouseOverVolumeSlider(volumeSlider) {
+			const rect = volumeSlider.getBoundingClientRect();
+			return (
+				rect.top <= window.event.clientY &&
+				window.event.clientY <= rect.bottom &&
+				rect.left <= window.event.clientX &&
+				window.event.clientX <= rect.right
+			);
+		}
+
+		// Check for Picture-in-Picture support
+		if (document.pictureInPictureEnabled) {
+			pictureInPictureBtn.style.display = "block"; // Show button
+			pictureInPictureBtn.addEventListener("click", () =>
+				togglePictureInPicture(video)
+			);
+		} else {
+			pictureInPictureBtn.style.display = "none"; // Hide button
+		}
+
+		// Check for Fullscreen support
+		if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
+			fullscreenBtn.style.display = "block"; // Show button
+			fullscreenBtn.addEventListener("click", () =>
+				toggleFullScreen(videoContainer)
+			);
+		} else {
+			fullscreenBtn.style.display = "none"; // Hide button
+		}
+
+		// Check for AirPlay support
+		if (window.WebKitPlaybackTargetAvailabilityEvent) {
+			airplayBtn.style.display = "block"; // Show button
+			airplayBtn.addEventListener("click", () => handleAirPlay(video));
+		} else {
+			airplayBtn.style.display = "none"; // Hide button
+		}
+
+		// Handle Chromecast Initialization
+		handleChromecastInitialization(chromecastBtn);
+	});
+
+	function togglePlayPause(video, playPauseBtn) {
+		if (video.paused) {
+			video.play();
+			playPauseBtn.textContent = "pause";
+		} else {
+			video.pause();
+			playPauseBtn.textContent = "play_arrow";
+		}
+	}
+
+	function togglePictureInPicture(video) {
+		if (!document.pictureInPictureElement) {
+			video.requestPictureInPicture();
+		} else {
+			document.exitPictureInPicture();
+		}
+	}
+
+	function toggleFullScreen(videoContainer) {
+		if (!document.fullscreenElement) {
+			videoContainer.requestFullscreen();
+		} else {
+			document.exitFullscreen();
+		}
+	}
+
+	function updateVolume(video, volumeSlider, volumeLine, event) {
+		const sliderBounds = volumeSlider.getBoundingClientRect();
+		const mouseYRelativeToSlider = sliderBounds.bottom - event.clientY;
+		const threshold = 5;
+		let sliderPosition;
+
+		if (mouseYRelativeToSlider < threshold) {
+			sliderPosition = 0;
+		} else if (mouseYRelativeToSlider > sliderBounds.height - threshold) {
+			sliderPosition = sliderBounds.height;
+		} else {
+			sliderPosition = mouseYRelativeToSlider;
+		}
+
+		const volume = sliderPosition / sliderBounds.height;
+		video.volume = volume;
+		volumeLine.style.height = volume * 100 + "%";
+	}
+
+	function toggleVolume(video, toggleVolumeBtn) {
+		if (video.muted) {
+			video.muted = false;
+			toggleVolumeBtn.textContent = "volume_up";
+		} else {
+			video.muted = true;
+			toggleVolumeBtn.textContent = "volume_off";
+		}
+	}
+
+	function updateProgressBar(video, progressBar) {
+		const percentage = (video.currentTime / video.duration) * 100;
+		progressBar.style.width = percentage + "%";
+	}
+
+	function updateBufferedBar(video, bufferedBar) {
+		if (video.buffered.length > 0) {
+			const bufferedEnd = video.buffered.end(video.buffered.length - 1);
+			const percentage = (bufferedEnd / video.duration) * 100;
+			bufferedBar.style.width = percentage + "%";
+		}
+	}
+
+	function setVideoTime(
+		video,
+		progressContainer,
+		progressBar,
+		event,
+		isDragging
+	) {
+		if (isDragging || event.type === "click") {
+			const offsetX =
+				event.clientX - progressContainer.getBoundingClientRect().left;
+			const percentage = offsetX / progressContainer.offsetWidth;
+			video.currentTime = percentage * video.duration;
+			progressBar.style.width = percentage * 100 + "%";
+		}
+	}
+
+	function updateTimestamp(video, timestamp) {
+		const formattedCurrentTime = formatTime(video.currentTime);
+		const formattedDuration = formatTime(
+			Math.round(video.duration - video.currentTime)
+		);
+		timestamp.textContent = `${formattedCurrentTime} / ${formattedDuration}`;
+	}
+
+	function formatTime(timeInSeconds) {
+		const hours = Math.floor(timeInSeconds / 3600);
+		const minutes = Math.floor((timeInSeconds % 3600) / 60);
+		const seconds = Math.floor(timeInSeconds % 60);
+		const formattedMinutes = minutes.toString().padStart(2, "0");
+		const formattedSeconds = seconds.toString().padStart(2, "0");
+
+		if (hours > 0) {
+			const formattedHours = hours.toString().padStart(2, "0");
+			return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+		}
+		return `${formattedMinutes}:${formattedSeconds}`;
+	}
+
+	function handleAirPlay(video) {
+		if (window.WebKitPlaybackTargetAvailabilityEvent) {
+			video.addEventListener(
+				"webkitplaybacktargetavailabilitychanged",
+				(event) => {
+					if (event.availability === "available") {
+						video.webkitShowPlaybackTargetPicker();
+					}
+				}
+			);
+		} else {
+			alert("AirPlay is not supported in this browser.");
+		}
+	}
+
+	function handleChromecastInitialization(chromecastBtn) {
+		try {
+			if (!chrome.cast || !chrome.cast.isAvailable) {
+				console.log("Attempting to initialize Chromecast API...");
+				setTimeout(() => initializeCastApi(chromecastBtn), 1000);
+			} else {
+				console.log("Chromecast API is available.");
+				initializeCastApi(chromecastBtn);
+			}
+		} catch (e) {
+			console.error("Chromecast API is not supported in this browser.");
+		}
+	}
+
+	function initializeCastApi(chromecastBtn) {
+		try {
+			const sessionRequest = new chrome.cast.SessionRequest(
+				chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
+			);
+			const apiConfig = new chrome.cast.ApiConfig(
+				sessionRequest,
+				() => {},
+				(availability) => receiverListener(availability)
+			);
+
+			chrome.cast.initialize(
+				apiConfig,
+				() => {
+					console.log("Chromecast API successfully initialized.");
+					// If the API is initialized, display the Chromecast button
+					chromecastBtn.style.display = "block";
+
+					// Add the event listener to the Chromecast button
+					chromecastBtn.addEventListener("click", () =>
+						requestChromecastSession(sessionRequest)
+					);
+				},
+				console.error
+			);
+		} catch (e) {
+			console.error("Failed to initialize Chromecast API:", e);
+		}
+	}
+
+	function receiverListener(availability) {
+		if (availability === chrome.cast.ReceiverAvailability.AVAILABLE) {
+			console.log("Chromecast receiver available.");
+		} else {
+			console.log("Chromecast receiver not available.");
+		}
+	}
+
+	function requestChromecastSession(sessionRequest, video) {
+		if (!sessionRequest) return;
+		chrome.cast.requestSession((session) => {
+			const videoSrc = video.currentSrc;
+			const videoType = video.type;
+			const mediaInfo = new chrome.cast.media.MediaInfo(videoSrc, videoType);
+			const request = new chrome.cast.media.LoadRequest(mediaInfo);
+			session.loadMedia(request, () => {}, console.error);
+		}, console.error);
+	}
+});
+
+            </script>
+  </body>
+</html>

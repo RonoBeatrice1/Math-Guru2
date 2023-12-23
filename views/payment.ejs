@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CheckOut</title>
+    <link
+      rel="shortcut icon"
+      href="https://e7.pngegg.com/pngimages/541/631/png-clipart-mathematics-logo-word-problem-algebra-black-dandelion-logo-algebra.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Zeyada&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Dosis", sans-serif;
+      margin-top: 100px;
+      width: 100%;
+      height: 100vh;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .wrapper {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 40px;
+      margin-left: 30px;
+    }
+
+    .logo-image {
+      margin-right: 10px;
+      width: 50px;
+      height: 50px;
+    }
+
+    .logo-text {
+      font-family: "Zeyada", cursive;
+      font-weight: 900;
+      color: darkred;
+      margin-top: 15px;
+      margin-bottom: 0;
+      font-size: 40px;
+      line-height: 1;
+    }
+
+    .container {
+      max-width: 500px;
+      height: auto;
+      margin: 0px auto;
+      background: #fff;
+      padding: 20px 40px 30px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-top: 7px solid white;
+    }
+
+    .title {
+      color: black;
+      font-size: 2em;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .input-form {
+      margin-bottom: 20px;
+    }
+
+    .input-form .label {
+      display: block;
+      font-size: 1em;
+      color: black;
+      text-transform: capitalize;
+      margin-bottom: 8px;
+    }
+
+    .input-form .items {
+      margin-bottom: 20px;
+    }
+
+    .section-1 .items .input,
+    .section-2 .items .input,
+    .section-3 .items .input {
+      background: transparent;
+      border: 2px solid black;
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      color: #212121;
+      border-radius: 3px;
+    }
+
+    .input-form .section-3 {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .input-form .section-3 .items {
+      width: 48%;
+    }
+
+    .btn {
+      background: darkred;
+      color: #fff;
+      font-size: 1.25em;
+      padding: 10px 0;
+      text-align: center;
+      text-transform: uppercase;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .cvc {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .cvc .tooltip {
+      color: #d4d4d4;
+      border: 2px solid #d4d4d4;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .cvc .cvc-img {
+      position: absolute;
+      top: -300%;
+      right: 0;
+      background: black;
+      padding: 12px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .cvc .cvc-img img {
+      width: 100px;
+      height: auto;
+      display: block;
+    }
+
+    .cvc:hover .cvc-img {
+      display: block;
+    }
+
+    @media screen and (max-width: 460px) {
+      .input-form .section-3 {
+        flex-direction: column;
+      }
+      .input-form .section-3 .items {
+        width: 100%;
+      }
+      .input-form .items {
+        margin-bottom: 10px;
+      }
+
+      .input-form {
+        margin-bottom: 15px;
+      }
+      .title {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+      }
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <div class="logo">
+        <img class="logo-image" src="/Images/logarithm.png" alt="image" />
+        <h1 class="logo-text">MathGuru</h1>
+      </div>
+      <div class="container">
+        <div class="title">Checkout Form</div>
+
+        <div class="input-form">
+          <div class="section-1">
+            <div class="items">
+              <label class="label">card number</label>
+              <input
+                type="text"
+                class="input"
+                maxlength="16"
+                data-mask="0000 0000 0000 0000"
+                placeholder="1234 1234 1234 1234"
+              />
+            </div>
+          </div>
+          <div class="section-2">
+            <div class="items">
+              <label class="label">card holder</label>
+              <input type="text" class="input" placeholder="John Doe" />
+            </div>
+          </div>
+          <div class="section-3">
+            <div class="items">
+              <label class="label">Expire date</label>
+              <input
+                type="text"
+                class="input"
+                data-mask="00 / 00"
+                placeholder="MM / YY"
+              />
+            </div>
+            <div class="items">
+              <div class="cvc">
+                <label class="label">cvc code</label>
+                <div class="tooltip">?</div>
+              </div>
+              <input
+                type="text"
+                class="input"
+                data-mask="0000"
+                placeholder="0000"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="btn">proceed</div>
+      </div>
+    </div>
+    <script>
+      document.querySelector(".btn").addEventListener("click", function () {
+        document.querySelectorAll(".input").forEach(function (input) {
+          input.value = "";
+        });
+      });
+    </script>
+  </body>
+</html>

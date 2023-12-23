@@ -1,0 +1,1252 @@
+<!-- calculus.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculus Quiz - Limits</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Zeyada&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/24b7b4270b.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      body {
+        background: white;
+        font-family: "Dosis", sans-serif;
+        font-size: 18px;
+        color: black;
+      }
+
+      .quizArea {
+        width: 95%;
+        margin: auto;
+        padding: 10px;
+        position: relative;
+        text-align: center;
+      }
+      .mc_quiz {
+        color: black;
+        margin-bottom: 0px;
+      }
+
+      .multipleChoiceQues {
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+      }
+      .quizBox {
+        width: 90%;
+        margin: auto;
+      }
+
+      .question {
+        text-align: center;
+        font-size: 0.8em;
+      }
+
+      .buttonArea {
+        text-align: right;
+        height: 4.5em;
+      }
+
+      button {
+        height: 4em;
+        width: 130px;
+        padding: 1.5em auto;
+        margin: 1em auto;
+        background-color: black;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.5em;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* .backBtn {
+        display: block;
+        margin-left: 10%;
+        margin-top: 10%;
+        background-color: black;
+        text-decoration: none;
+      } */
+
+      #next:hover,
+      #submit:hover,
+      .viewanswer:hover,
+      .viewchart:hover,
+      .backBtn:hover,
+      .replay:hover {
+        letter-spacing: 0.8em;
+      }
+      .viewanswer,
+      .viewchart,
+      .replay {
+        width: 30%;
+      }
+
+      .backBtn {
+        padding: 1.5em auto;
+        height: 4em;
+        width: 130px;
+        font-size: 0.8em;
+        margin-right: 70%;
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
+      #next:active,
+      #submit:active,
+      .viewanswer:active,
+      .viewchart:active,
+      .backBtn:active,
+      .replay:active {
+        letter-spacing: 0.3em;
+      }
+
+      .resultArea {
+        display: none;
+        width: 70%;
+        margin: auto;
+
+        padding: 10px;
+      }
+
+      .chartBox {
+        width: 60%;
+        margin: auto;
+      }
+
+      .resultPage1 {
+        text-align: center;
+      }
+
+      .briefchart {
+        text-align: center;
+      }
+
+      .resultBtns {
+        width: 60%;
+        margin: auto;
+        text-align: center;
+      }
+      .resultPage2,
+      .resultPage3 {
+        display: none;
+        text-align: center;
+      }
+
+      .allAnswerBox {
+        width: 100%;
+        margin: 0;
+        position: relative;
+      }
+
+      ._resultboard {
+        position: relative;
+        display: inline-block;
+        width: 40%;
+        padding: 2%;
+        height: 190px;
+        vertical-align: top;
+        border-bottom: 0.6px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
+        margin-bottom: 4px;
+      }
+
+      ._resultboard:nth-child(even) {
+        margin-left: 5px;
+        border-left: 0.6px solid rgba(255, 255, 255, 0.2);
+      }
+      ._resultboard:nth-last-child(2),
+      ._resultboard:nth-last-child(1) {
+        border-bottom: 0px;
+      }
+
+      ._header {
+        font-weight: bold;
+        margin-bottom: 8px;
+        height: 90px;
+      }
+
+      ._yourans,
+      ._correct {
+        margin-bottom: 8px;
+        position: relative;
+        line-height: 2;
+        padding: 5px;
+      }
+      ._correct {
+        background: #968089;
+      }
+      .h-correct {
+        background: #968089;
+      }
+
+      .h-correct:after,
+      ._correct:after {
+        line-height: 1.4;
+        position: absolute;
+        z-index: 499;
+        font-family: "FontAwesome";
+        content: "\f00c";
+        bottom: 0;
+        right: 7px;
+        font-size: 1.9em;
+        color: green;
+      }
+      .h-incorrect {
+        background: red;
+      }
+      .h-incorrect:after {
+        line-height: 1.4;
+        position: absolute;
+        z-index: 499;
+        font-family: "FontAwesome";
+        content: "\f00d";
+        bottom: 0;
+        right: 7px;
+        font-size: 1.9em;
+        color: red;
+      }
+
+      .resultPage3 h1,
+      .resultPage1 h1,
+      .resultPage2 h1 {
+        text-align: center;
+        padding-bottom: 10px;
+        border-bottom: 1.3px solid rgba(21, 63, 101, 0.9);
+        color: #3a5336;
+      }
+
+      .my-progress {
+        position: relative;
+        display: block;
+        margin: 3rem auto 0rem;
+        width: 100%;
+        max-width: 950px;
+      }
+
+      progress {
+        display: block;
+        position: relative;
+        top: -0.5px;
+        left: 5px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: #f1f2ec;
+        width: 100%;
+        height: 2.5px;
+        background: none;
+        -webkit-transition: 1s;
+        transition: 1s;
+        will-change: contents;
+      }
+      progress::-webkit-progress-bar {
+        background-color: #f1f2ec;
+      }
+      progress::-webkit-progress-value {
+        background-color: #153f65;
+        -webkit-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+      }
+
+      .my-progress-indicator {
+        position: absolute;
+        top: -6px;
+        left: 0;
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background: #7aa4a9;
+        border: 3px solid #f1f2ec;
+        border-radius: 50%;
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        -webkit-transition-delay: 0.3s;
+        transition-delay: 0.3s;
+        will-change: transform;
+      }
+      .my-progress-indicator.progress_1 {
+        display: none;
+        left: 0;
+      }
+      .my-progress-indicator.progress_2 {
+        display: none;
+        left: 9%;
+      }
+      .my-progress-indicator.progress_3 {
+        display: none;
+        left: 18%;
+      }
+      .my-progress-indicator.progress_4 {
+        display: none;
+        left: 27%;
+      }
+      .my-progress-indicator.progress_5 {
+        display: none;
+        left: 36%;
+      }
+      .my-progress-indicator.progress_6 {
+        display: none;
+        left: 45%;
+      }
+      .my-progress-indicator.progress_7 {
+        display: none;
+        left: 54%;
+      }
+      .my-progress-indicator.progress_8 {
+        display: none;
+        left: 63%;
+      }
+      .my-progress-indicator.progress_9 {
+        display: none;
+        left: 72%;
+      }
+      .my-progress-indicator.progress_10 {
+        display: none;
+        left: 81%;
+      }
+      .my-progress-indicator.progress_11 {
+        display: none;
+        left: 90%;
+      }
+      .my-progress-indicator.progress_12 {
+        display: none;
+        left: 100%;
+      }
+      .my-progress-indicator.active {
+        -webkit-animation: bounce 0.5s forwards;
+        animation: bounce 0.5s forwards;
+        -webkit-animation-delay: 0.5s;
+        animation-delay: 0.5s;
+        border-color: #153f65;
+      }
+
+      .animation-container {
+        position: relative;
+        width: 100%;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+        will-change: padding;
+        overflow: hidden;
+      }
+
+      .form-step {
+        position: absolute;
+        -webkit-transition: 1s ease-in-out;
+        transition: 1s ease-in-out;
+        -webkit-transition-timing-function: ease-in-out;
+        transition-timing-function: ease-in-out;
+        will-change: transform, opacity;
+      }
+
+      .form-step.leaving {
+        -webkit-animation: left-and-out 0.5s forwards;
+        animation: left-and-out 0.5s forwards;
+      }
+
+      .form-step.waiting {
+        -webkit-transform: translateX(400px);
+        transform: translateX(400px);
+      }
+
+      .form-step.coming {
+        -webkit-animation: right-and-in 0.5s forwards;
+        animation: right-and-in 0.5s forwards;
+      }
+
+      @-webkit-keyframes left-and-out {
+        100% {
+          opacity: 0;
+          -webkit-transform: translateX(-400px);
+          transform: translateX(-400px);
+        }
+      }
+
+      @keyframes left-and-out {
+        100% {
+          opacity: 0;
+          -webkit-transform: translateX(-400px);
+          transform: translateX(-400px);
+        }
+      }
+      @-webkit-keyframes right-and-in {
+        100% {
+          opacity: 1;
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+      }
+      @keyframes right-and-in {
+        100% {
+          opacity: 1;
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+      }
+      @-webkit-keyframes bounce {
+        50% {
+          -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+        }
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+      @keyframes bounce {
+        50% {
+          -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+        }
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      ul {
+        list-style-type: none;
+        width: 220px;
+        margin: auto;
+        text-align: left;
+      }
+
+      li {
+        position: relative;
+        padding: 10px;
+        padding-left: 40px;
+        height: 30px;
+      }
+      label {
+        color: black;
+      }
+      label:before {
+        content: "";
+        width: 15px;
+        height: 15px;
+        background: black;
+        position: absolute;
+        left: 7px;
+        top: calc(50% - 13px);
+        box-sizing: border-box;
+        border-radius: 50%;
+      }
+
+      input[type="radio"] {
+        opacity: 0;
+        display: inline-block;
+        vertical-align: middle;
+        z-index: 100;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 30px;
+        position: absolute;
+        left: 0;
+        top: calc(50% - 15px);
+        cursor: pointer;
+      }
+
+      .bullet {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        left: -3px;
+        top: 2px;
+        border: 5px solid darkred;
+        opacity: 0;
+        border-radius: 50%;
+      }
+
+      input[type="radio"]:checked ~ .bullet {
+        position: absolute;
+        opacity: 1;
+        animation-name: explode;
+        animation-duration: 0.35s;
+      }
+
+      .line {
+        position: absolute;
+        width: 10px;
+        height: 2px;
+        background-color: #fff;
+        opacity: 0;
+      }
+
+      .line.zero {
+        left: 11px;
+        top: -21px;
+        transform: translateY(20px);
+        width: 2px;
+        height: 10px;
+      }
+
+      .line.one {
+        right: -7px;
+        top: -11px;
+        transform: rotate(-55deg) translate(-9px);
+      }
+
+      .line.two {
+        right: -20px;
+        top: 11px;
+        transform: translate(-9px);
+      }
+
+      .line.three {
+        right: -8px;
+        top: 35px;
+        transform: rotate(55deg) translate(-9px);
+      }
+
+      .line.four {
+        left: -8px;
+        top: -11px;
+        transform: rotate(55deg) translate(9px);
+      }
+
+      .line.five {
+        left: -20px;
+        top: 11px;
+        transform: translate(9px);
+      }
+
+      .line.six {
+        left: -8px;
+        top: 35px;
+        transform: rotate(-55deg) translate(9px);
+      }
+
+      .line.seven {
+        left: 11px;
+        bottom: -21px;
+        transform: translateY(-20px);
+        width: 2px;
+        height: 10px;
+      }
+
+      input[type="radio"]:checked ~ .bullet .line.zero {
+        animation-name: drop-zero;
+        animation-delay: 0.1s;
+        animation-duration: 0.9s;
+        animation-fill-mode: forwards;
+      }
+
+      input[type="radio"]:checked ~ .bullet .line.one {
+        animation-name: drop-one;
+        animation-delay: 0.1s;
+        animation-duration: 0.9s;
+        animation-fill-mode: forwards;
+      }
+
+      input[type="radio"]:checked ~ .bullet .line.two {
+        animation-name: drop-two;
+        animation-delay: 0.1s;
+        animation-duration: 0.9s;
+        animation-fill-mode: forwards;
+      }
+
+      input[type="radio"]:checked ~ .bullet .line.three {
+        animation-name: drop-three;
+        animation-delay: 0.1s;
+        animation-duration: 0.9s;
+        animation-fill-mode: forwards;
+      }
+
+      input[type="radio"]:checked ~ .bullet .line.four {
+        animation-name: drop-four;
+        animation-delay: 0.1s;
+        animation-duration: 0.9s;
+        animation-fill-mode: forwards;
+      }
+
+      input[type="radio"]:checked ~ .bullet .line.five {
+        animation-name: drop-five;
+        animation-delay: 0.1s;
+        animation-duration: 0.9s;
+        animation-fill-mode: forwards;
+      }
+
+      input[type="radio"]:checked ~ .bullet .line.six {
+        animation-name: drop-six;
+        animation-delay: 0.1s;
+        animation-duration: 0.9s;
+        animation-fill-mode: forwards;
+      }
+
+      input[type="radio"]:checked ~ .bullet .line.seven {
+        animation-name: drop-seven;
+        animation-delay: 0.1s;
+        animation-duration: 0.9s;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes explode {
+        0% {
+          opacity: 0;
+          transform: scale(10);
+        }
+        60% {
+          opacity: 1;
+          transform: scale(0.5);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes drop-zero {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+          height: 10px;
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-2px);
+          height: 0px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes drop-one {
+        0% {
+          opacity: 0;
+          transform: rotate(-55deg) translate(-20px);
+          width: 10px;
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          transform: rotate(-55deg) translate(9px);
+          width: 0px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes drop-two {
+        0% {
+          opacity: 0;
+          transform: translate(-20px);
+          width: 10px;
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          transform: translate(9px);
+          width: 0px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes drop-three {
+        0% {
+          opacity: 0;
+          transform: rotate(55deg) translate(-20px);
+          width: 10px;
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          transform: rotate(55deg) translate(9px);
+          width: 0px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes drop-four {
+        0% {
+          opacity: 0;
+          transform: rotate(55deg) translate(20px);
+          width: 10px;
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          transform: rotate(55deg) translate(-9px);
+          width: 0px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes drop-five {
+        0% {
+          opacity: 0;
+          transform: translate(20px);
+          width: 10px;
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-9px);
+          width: 0px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes drop-six {
+        0% {
+          opacity: 0;
+          transform: rotate(-55deg) translate(20px);
+          width: 10px;
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          transform: rotate(-55deg) translate(-9px);
+          width: 0px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes drop-seven {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+          height: 10px;
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(2px);
+          height: 0px;
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="quizArea">
+      <div class="multipleChoiceQues">
+        <h1 class="mc_quiz">Calculus Quiz</h1>
+        <div class="my-progress">
+          <progress
+            class="my-progress-bar"
+            min="0"
+            max="100"
+            value="0"
+            step="9"
+            aria-labelledby="my-progress-completion"
+          ></progress>
+          <p
+            id="my-progress-completion"
+            class="js-my-progress-completion sr-only"
+            aria-live="polite"
+          >
+            0% complete
+          </p>
+        </div>
+        <div class="quizBox">
+          <div class="question"></div>
+          <div class="answerOptions"></div>
+          <div class="buttonArea">
+            <a href="/courses">
+              <button class="backBtn">Back</button>
+            </a>
+            <button id="next" class="hidden">Next</button>
+            <button id="submit" class="hidden">Submit</button>
+          </div>
+        </div>
+      </div>
+      <div class="resultArea">
+        <div class="resultPage1">
+          <div class="resultBox">
+            <h1>Result Summary</h1>
+          </div>
+          <div class="briefchart">
+            <svg height="300" width="300" id="_cir_progress">
+              <g>
+                <rect x="0" y="1" width="30" height="15" fill="#ab4e6b" />
+                <text x="32" y="14" font-size="14" class="_text_incor">
+                  Incorrect : 12
+                </text>
+              </g>
+              <g>
+                <rect x="160" y="1" width="30" height="15" fill="#968089" />
+                <text x="192" y="14" font-size="14" class="_text_cor">
+                  Correct : 12
+                </text>
+              </g>
+              <circle
+                class="_cir_P_x"
+                cx="150"
+                cy="150"
+                r="120"
+                stroke="#ab4e6b"
+                stroke-width="20"
+                fill="none"
+                onmouseover="evt.target.setAttribute('stroke', 'rgba(171, 78, 107,0.7)');"
+                onmouseout="evt.target.setAttribute('stroke','#ab4e6b');"
+              ></circle>
+
+              <circle
+                class="_cir_P_y"
+                cx="150"
+                cy="150"
+                r="120"
+                stroke="#968089"
+                stroke-width="20"
+                stroke-dasharray="0,1000"
+                fill="none"
+                onmouseover="evt.target.setAttribute('stroke', 'rgba(150, 128, 137,0.7)');"
+                onmouseout="evt.target.setAttribute('stroke','#968089');"
+              ></circle>
+              <text
+                x="50%"
+                y="50%"
+                text-anchor="middle"
+                stroke="none"
+                stroke-width="1px"
+                dy=".3em"
+                class="_cir_Per"
+              >
+                0%
+              </text>
+            </svg>
+          </div>
+
+          <div class="resultBtns">
+            <a href="/subscription"
+              ><button class="viewanswer">View Answers</button></a
+            >
+            <button class="replay">
+              <i class="fa fa-repeat" style="font-size: 1em"></i> <br />Replay
+            </button>
+          </div>
+        </div>
+
+        <div class="resultPage2">
+          <h1>Your Result</h1>
+          <div class="chartBox">
+            <canvas id="myChart" width="400" height="400"></canvas>
+          </div>
+          <button class="backBtn">Back</button>
+        </div>
+
+        <!-- <div class="resultPage3">
+          <h1>Your Answers</h1>
+          <div class="allAnswerBox"></div>
+          <button class="backBtn">Back</button>
+        </div> -->
+      </div>
+    </div>
+    <script>
+      var $progressValue = 0;
+      var resultList = [];
+
+      const quizdata = [
+        {
+          question:
+            "What is the derivative of the function f(x) = 3x^2 - 2x + 5 with respect to x?",
+          options: ["6x - 2", "6x - 2x + 5", " 6x - 2", "3x^2 - 2x"],
+          answer: "6x - 2.",
+          category: 1,
+        },
+        {
+          question:
+            "What is the integral of the function f(x) = 2x + 3 with respect to x?",
+          options: ["x^2 + 3x + C", "x^2 + 3", "x^2 + C", "2x + C"],
+          answer: "x^2 + 3x + C",
+          category: 2,
+        },
+        {
+          question:
+            "Evaluate the limit of (x^2 - 4) / (x - 2) as x approaches 2.",
+          options: ["4", "2", "1", "0"],
+          answer: "2",
+          category: 3,
+        },
+        {
+          question:
+            "Find the critical points of the function f(x) = 3x^3 - 6x^2 + 3x.",
+          options: [
+            "x = 0, x = 1",
+            "x = 0, x = 1, x = 2",
+            "x = 0, x = 1, x = -1",
+            "x = 1",
+          ],
+          answer: "x = 0, x = 1, x = -1",
+          category: 4,
+        },
+        {
+          question: "Determine the second derivative of f(x) = cos(x).",
+          options: ["-sin(x)", "cos(x)", "-cos(x)", "sin(x)"],
+          answer: "-sin(x)",
+          category: 5,
+        },
+        {
+          question:
+            "Find the area under the curve y = 2x + 1 from x = 0 to x = 5.",
+          options: [
+            "25 square units",
+            "15 square units",
+            "20 square units",
+            "10 square units",
+          ],
+          answer: "20 square units",
+          category: 6,
+        },
+        // Add more quiz questions here
+      ];
+
+      // Randomly shuffle questions
+      function shuffleArray(question) {
+        var shuffled = question.sort(function () {
+          return 0.5 - Math.random();
+        });
+        return shuffled;
+      }
+
+      // Generate shuffled questions
+      function generateQuestions() {
+        var questions = shuffleArray(quizdata);
+        return questions;
+      }
+
+      // Return list of options
+      function returnOptionList(opts, i) {
+        var optionHtml =
+          '<li class="myoptions">' +
+          '<input value="' +
+          opts +
+          '" name="optRdBtn" type="radio" id="rd_' +
+          i +
+          '">' +
+          '<label for="rd_' +
+          i +
+          '">' +
+          opts +
+          "</label>" +
+          '<div class="bullet">' +
+          '<div class="line zero"></div>' +
+          '<div class="line one"></div>' +
+          '<div class="line two"></div>' +
+          '<div class="line three"></div>' +
+          '<div class="line four"></div>' +
+          '<div class="line five"></div>' +
+          '<div class="line six"></div>' +
+          '<div class="line seven"></div>' +
+          "</div>" +
+          "</li>";
+
+        return optionHtml;
+      }
+
+      // Render options
+      function renderOptions(optionList) {
+        var ulContainer = document.createElement("ul");
+        ulContainer.setAttribute("id", "optionList");
+
+        for (var i = 0, len = optionList.length; i < len; i++) {
+          var optionContainer = returnOptionList(optionList[i], i);
+          ulContainer.innerHTML += optionContainer;
+        }
+        document.querySelector(".answerOptions").innerHTML = "";
+        document.querySelector(".answerOptions").appendChild(ulContainer);
+      }
+
+      // Render question
+      function renderQuestion(question) {
+        document.querySelector(".question").innerHTML =
+          "<h1>" + question + "</h1>";
+      }
+
+      // Render quiz :: Question and option
+      function renderQuiz(questions, index) {
+        var currentQuest = questions[index];
+        renderQuestion(currentQuest.question);
+        renderOptions(currentQuest.options);
+      }
+
+      // Return correct answer of a question
+      function getCorrectAnswer(questions, index) {
+        return questions[index].answer;
+      }
+
+      // Insert progress bar in HTML
+      function getProgressindicator(length) {
+        var progressbarhtml = " ";
+        for (var i = 0; i < length; i++) {
+          progressbarhtml +=
+            '<div class="my-progress-indicator progress_' +
+            (i + 1) +
+            " " +
+            (i == 0 ? "active" : "") +
+            '"></div>';
+        }
+        document
+          .querySelector(".my-progress")
+          .insertAdjacentHTML("afterend", progressbarhtml);
+      }
+
+      // Change progress bar when next button is clicked
+      function changeProgressValue() {
+        $progressValue += 9;
+        if ($progressValue >= 100) {
+          $progressValue = 100;
+        }
+        var progressBar = document.querySelector(".my-progress-bar");
+        progressBar.value = $progressValue;
+        var progressCompletion = document.getElementById(
+          "my-progress-completion"
+        );
+        progressCompletion.innerHTML = $progressValue + "% complete";
+      }
+
+      // Add clicked answer to result array
+      function addClickedAnswerToResult(questions, presentIndex, clicked) {
+        var correct = getCorrectAnswer(questions, presentIndex);
+        var result = {
+          index: presentIndex,
+          question: questions[presentIndex].question,
+          clicked: clicked,
+          iscorrect: clicked == correct ? true : false,
+          answer: correct,
+          category: questions[presentIndex].category,
+        };
+        resultList.push(result);
+      }
+
+      // Count right and wrong answer number
+      function countAnswers(results) {
+        var countCorrect = 0,
+          countWrong = 0;
+
+        for (var i = 0; i < results.length; i++) {
+          if (results[i].iscorrect) countCorrect++;
+          else countWrong++;
+        }
+
+        return [countCorrect, countWrong];
+      }
+
+      // Generate array for percentage calculation
+      function genResultArray(results, wrong) {
+        var resultByCat = resultByCategory(results);
+        var arrayForChart = correctAnswerArray(resultByCat);
+        arrayForChart.push(wrong);
+        return arrayForChart;
+      }
+
+      // Percentage calculation
+      function percentCalculation(array, total) {
+        var percent = array.map(function (d, i) {
+          return ((100 * d) / total).toFixed(2);
+        });
+        return percent;
+      }
+
+      // Get percentage for chart
+      function getPercentage(resultByCat, wrong) {
+        var totalNumber = resultList.length;
+        var wrongAnswer = wrong;
+        var arrayForChart = genResultArray(resultByCat, wrong);
+        return percentCalculation(arrayForChart, totalNumber);
+      }
+
+      // Categorize result
+      function resultByCategory(results) {
+        var categoryCount = [];
+        var ctArray = results.reduce(function (res, value) {
+          if (!res[value.category]) {
+            res[value.category] = {
+              category: value.category,
+              correctanswer: 0,
+            };
+            categoryCount.push(res[value.category]);
+          }
+          var val = value.iscorrect ? 1 : 0;
+          res[value.category].correctanswer += val;
+          return res;
+        }, {});
+
+        categoryCount.sort(function (a, b) {
+          return a.category - b.category;
+        });
+
+        return categoryCount;
+      }
+
+      // Render result summary
+      function renderResult(resultList) {
+        var results = resultList;
+        var countCorrect = countAnswers(results)[0],
+          countWrong = countAnswers(results)[1];
+
+        renderBriefChart(countCorrect, resultList.length, countWrong);
+      }
+
+      // Render brief chart
+      function renderBriefChart(correct, total, incorrect) {
+        var percent = (100 * correct) / total;
+        if (Math.round(percent) !== percent) {
+          percent = percent.toFixed(2);
+        }
+
+        totalPieChart(percent, "_cir_progress", correct, incorrect);
+      }
+
+      // Total score pie chart
+      function totalPieChart(_upto, _cir_progress_id, _correct, _incorrect) {
+        document
+          .getElementById(_cir_progress_id)
+          .querySelector("._text_incor").innerHTML =
+          "Incorrect : " + _incorrect;
+        document
+          .getElementById(_cir_progress_id)
+          .querySelector("._text_cor").innerHTML = "Correct : " + _correct;
+
+        var unchnagedPer = _upto;
+        _upto = _upto > 100 ? 100 : _upto < 0 ? 0 : _upto;
+
+        var _progress = 0;
+        var _cir_progress = document
+          .getElementById(_cir_progress_id)
+          .querySelector("._cir_P_y");
+        var _text_percentage = document
+          .getElementById(_cir_progress_id)
+          .querySelector("._cir_Per");
+        var _input_percentage;
+        var _percentage;
+
+        var _sleep = setInterval(_animateCircle, 25);
+
+        function _animateCircle() {
+          _input_percentage = (_upto / 100) * 764;
+          _percentage = (_progress / 100) * 764;
+
+          _text_percentage.innerHTML = _progress + "%";
+
+          if (_percentage >= _input_percentage) {
+            _text_percentage.innerHTML =
+              '<tspan x="50%" dy="0em">' +
+              unchnagedPer +
+              '% </tspan><tspan  x="50%" dy="1.9em">Your Score</tspan>';
+            clearInterval(_sleep);
+          } else {
+            _progress++;
+            _cir_progress.setAttribute(
+              "stroke-dasharray",
+              _percentage + ",764"
+            );
+          }
+        }
+      }
+
+      // Function to start the quiz
+      var questions = generateQuestions();
+      function startQuiz() {
+        var presentIndex = 0;
+        var clicked = 0;
+
+        var questions = generateQuestions();
+        renderQuiz(questions, presentIndex);
+        getProgressindicator(questions.length);
+
+        document
+          .querySelector(".answerOptions")
+          .addEventListener("click", function (e) {
+            if (e.target.matches(".myoptions>input")) {
+              clicked = e.target.value;
+
+              if (questions.length === presentIndex + 1) {
+                document.getElementById("submit").classList.remove("hidden");
+                document.getElementById("next").classList.add("hidden");
+              } else {
+                document.getElementById("next").classList.remove("hidden");
+              }
+            }
+          });
+
+        document.getElementById("next").addEventListener("click", function (e) {
+          e.preventDefault();
+          addClickedAnswerToResult(questions, presentIndex, clicked);
+
+          this.classList.add("hidden");
+
+          presentIndex++;
+          renderQuiz(questions, presentIndex);
+          changeProgressValue();
+        });
+
+        document
+          .getElementById("submit")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            addClickedAnswerToResult(questions, presentIndex, clicked);
+
+            document.querySelector(".multipleChoiceQues").style.display =
+              "none";
+            document.querySelector(".resultArea").style.display = "block";
+            renderResult(resultList);
+          });
+
+        document
+          .querySelector(".resultArea")
+          .addEventListener("click", function (e) {
+            if (e.target.matches(".viewchart")) {
+              document.querySelector(".resultPage2").style.display = "block";
+              document.querySelector(".resultPage1").style.display = "none";
+              document.querySelector(".resultPage3").style.display = "none";
+              renderChartResult();
+            } else if (e.target.matches(".backBtn")) {
+              document.querySelector(".resultPage1").style.display = "block";
+              document.querySelector(".resultPage2").style.display = "none";
+              document.querySelector(".resultPage3").style.display = "none";
+              renderResult(resultList);
+            } else if (e.target.matches(".viewanswer")) {
+              document.querySelector(".resultPage3").style.display = "block";
+              document.querySelector(".resultPage2").style.display = "none";
+              document.querySelector(".resultPage1").style.display = "none";
+              getAllAnswer(resultList);
+            } else if (e.target.matches(".replay")) {
+              window.location.reload(true);
+            }
+          });
+      }
+
+      // Start the quiz when the DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        startQuiz();
+      });
+    </script>
+  </body>
+</html>

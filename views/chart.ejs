@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chart</title>
+    <link
+      rel="shortcut icon"
+      href="https://e7.pngegg.com/pngimages/541/631/png-clipart-mathematics-logo-word-problem-algebra-black-dandelion-logo-algebra.png"
+      type="image/x-icon"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section class="chart-section">
+        <div class="chart-container">
+          <canvas id="myChart"></canvas>
+        </div>
+        <div class="result-summary">
+          <p>Total Questions: <%= totalQuestions %></p>
+          <p>Correct Answers: <%= correctAnswers %></p>
+          <p>Wrong Answers: <%= wrongAnswers %></p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <a href="/levels">Back to Levels</a>
+    </footer>
+    <script>
+      window.onload = function () {
+        console.log("Window onload event fired.");
+
+        const options = document.querySelectorAll(".option");
+
+        options.forEach((option) => {
+          option.addEventListener("click", () => {
+            const selectedOption = option.querySelector(
+              "input[type='radio']:checked"
+            );
+            if (selectedOption) {
+              const submitButton = document.getElementById("submit");
+              submitButton.classList.remove("hidden");
+            }
+          });
+        });
+
+        // Retrieve the form element
+        const quizForm = document.getElementById("quizForm");
+
+        quizForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          console.log("Form submitted.");
+
+          // Create a new FormData object
+          const formData = new FormData(event.target);
+
+          // Send the form data to the server
+          fetch("/submit-quiz", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Quiz submission response:", data);
+
+              // Update result summary values
+              const totalQuestions = data.totalQuestions;
+              const correctAnswers = data.correctAnswers;
+              const wrongAnswers = data.wrongAnswers;
+              console.log("Total Questions:", totalQuestions);
+              console.log("Correct Answers:", correctAnswers);
+              console.log("Wrong Answers:", wrongAnswers);
+
+              const resultSummary = document.querySelector(".result-summary");
+              resultSummary.innerHTML = `
+                <p>Total Questions: ${totalQuestions}</p>
+                <p>Correct Answers: ${correctAnswers}</p>
+                <p>Wrong Answers: ${wrongAnswers}</p>
+              `;
+
+              // JavaScript code for generating the chart
+              const ctx = document.getElementById("myChart").getContext("2d");
+              const myChart = new Chart(ctx, {
+                type: "pie",
+                data: {
+                  labels: ["Correct Answers", "Wrong Answers"],
+                  datasets: [
+                    {
+                      data: [correctAnswers, wrongAnswers],
+                      backgroundColor: ["green", "red"],
+                    },
+                  ],
+                },
+              });
+
+              // Display the pie chart and handle back button
+              document
+                .querySelector(".resultArea")
+                .addEventListener("click", (event) => {
+                  if (event.target.matches(".viewchart")) {
+                    console.log("View Chart button clicked.");
+                    document.querySelector(".resultPage2").style.display =
+                      "block";
+                    document.querySelector(".resultPage1").style.display =
+                      "none";
+                  }
+                });
+
+              // Handle back button
+              document
+                .querySelector(".backBtn")
+                .addEventListener("click", () => {
+                  console.log("Back button clicked.");
+                  document.querySelector(".resultPage2").style.display = "none";
+                  document.querySelector(".resultPage1").style.display =
+                    "block";
+                });
+
+              // Redirect the user after submitting the quiz
+              const urlParams = new URLSearchParams(window.location.search);
+              const courseId = urlParams.get("courseId");
+              console.log("Redirecting to:", `/courses/${courseId}/levels`);
+              window.location.href = `/courses/${courseId}/levels`;
+            })
+            .catch((error) => {
+              console.error("Error submitting quiz:", error);
+            });
+        });
+      };
+    </script>
+  </body>
+</html>

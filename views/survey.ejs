@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome!</title>
+  </head>
+  <style>
+    .overlay {
+      opacity: 0;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: wheat;
+      filter: blur(6px);
+      transition: 120ms ease;
+      overflow: hidden;
+    }
+
+    .overlay_visible {
+      opacity: 1;
+    }
+
+    .popup {
+      box-sizing: border-box;
+      z-index: 25;
+      box-shadow: 0 2px 5px 5px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      border-radius: 24px;
+      width: 700px;
+      height: 92vh;
+      max-height: 420px;
+      min-height: 380px;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      visibility: hidden;
+      padding: 0 50px;
+    }
+
+    .popup__final-img {
+      max-width: 220px;
+      height: auto;
+      margin-top: 20px;
+      align-self: center;
+      border-radius: 5px;
+    }
+
+    .popup__content {
+      display: none;
+      margin: 0 auto;
+      flex-direction: column;
+      transition: all 3s ease;
+      transform: translateX(-15px);
+    }
+
+    .question-visible {
+      transition: all 3s ease;
+      display: flex;
+      transform: translateX(0);
+    }
+
+    .popup__progress-item img {
+      width: 14px;
+      height: 10px;
+    }
+
+    .popup_visible {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+      visibility: visible;
+      transition: 0.5s;
+      top: 50%;
+    }
+
+    .popup__title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      padding: 0;
+      margin: 10px 0 0;
+    }
+
+    .popup__subtitle {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+      margin: 8px 0;
+      padding: 0;
+    }
+
+    .popup__close {
+      color: #525252;
+      z-index: 21;
+      position: absolute;
+      top: 0;
+      right: 22px;
+      height: 16px;
+      width: 16px;
+      background-color: transparent;
+      border: none;
+      outline-color: transparent;
+      padding: 6px 12px 12px;
+      font-weight: 800;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .popup__button {
+      margin: 8px auto 0;
+      padding: 8px 0;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      outline-color: transparent;
+      border: none;
+      background-color: darkred;
+      color: #fff;
+      width: 176px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .popup__button:disabled {
+      margin: 8px auto 0;
+      padding: 8px 0;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      outline-color: transparent;
+      border: none;
+      background-color: #dfdfdf;
+      color: #fff;
+      width: 176px;
+      height: 40px;
+    }
+
+    .popup__progress {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      align-self: center;
+    }
+
+    .popup__progress-line {
+      height: 2px;
+      width: 48px;
+      background-color: darkred;
+    }
+
+    .popup__progress-item {
+      height: 38px;
+      width: 38px;
+      border-radius: 50%;
+      border: 2px solid darkred;
+      color: darkred;
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup__progress-item_active {
+      background-color: darkred;
+      color: #fff;
+    }
+
+    .quiz {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .quiz__question {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+      padding: 16px 0 12px;
+    }
+
+    .quiz__answers_images {
+      display: flex;
+    }
+
+    /* Customize the label (the container) */
+    .container {
+      display: block;
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 16px;
+      cursor: pointer;
+      font-size: 16px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .container_images {
+      padding: 0;
+      margin: 0 auto 40px;
+    }
+
+    .container_images > img {
+      width: 110px;
+      height: 130px;
+      object-fit: cover;
+    }
+
+    .container_images:not(:first-of-type) {
+      padding-left: 23px;
+    }
+
+    /* Hide the browser's default radio button */
+    .container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 12px;
+      width: 12px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 2.5px solid #808080;
+    }
+
+    .checkmark_images {
+      bottom: -26px;
+      left: 50%;
+      top: auto;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .container input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    .container input:checked ~ .checkmark {
+      border: 2px solid darkred;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .container .checkmark:after {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8.5px;
+      height: 8.5px;
+      border-radius: 50%;
+      background: black;
+    }
+  </style>
+  <body>
+    <div class="overlay"></div>
+    <div class="popup">
+      <button class="popup__close">&#x2715</button>
+      <!-- Question 1-->
+      <div class="popup__content question-visible">
+        <h2 class="popup__title">What description best fits you?</h2>
+        <p class="popup__subtitle">By doing this, we can tailor your experience to your preferences.</p>
+        <div class="popup__progress">
+          <div class="popup__progress-item popup__progress-item_active">1</div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item ">2</div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item">3</div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item">4</div>
+        </div>
+        <div class="quiz">
+          <h5 class="quiz__question">What Is Your Proficiency Level ?</h5>
+          <div class="quiz__answers">
+            <label class="container">Professional in a STEM Field
+              <input type="radio" name="option1" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Student
+              <input type="radio" name="option1" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container"> Beginner
+              <input type="radio" name="option1" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container"> Other
+              <input type="radio" name="option1" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <button class="popup__button" id="popupButton1" disabled="true">Next</button>
+        </div>
+      </div>
+      <!-- Question 2-->
+      <div class="popup__content">
+        <h2 class="popup__title">What description best fits you?</h2>
+        <p class="popup__subtitle">By doing this, we can tailor your experience to your preferences.</p>
+
+        <div class="popup__progress">
+          <div class="popup__progress-item">
+            &#x1F5F8;
+          </div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item popup__progress-item_active">2</div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item">3</div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item">4</div>
+        </div>
+        <div class="quiz">
+          <h5 class="quiz__question">What captures your primary interest?</h5>
+          <div class="quiz__answers">
+            <label class="container">Career Advancement
+              <input type="radio" name="option2" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Pursuing STEM Fields
+              <input type="radio" name="option2" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Academic Excellence
+              <input type="radio" name="option2" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Personal Enrichment
+              <input type="radio" name="option2" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <button class="popup__button" id="popupButton2" disabled="true">Next</button>
+        </div>
+      </div>
+      <!-- Question 3-->
+      <div class="popup__content">
+        <h2 class="popup__title">What description best fits you?</h2>
+        <p class="popup__subtitle">By doing this, we can tailor your experience to your preferences.</p>
+        <div class="popup__progress">
+          <div class="popup__progress-item">
+            &#x1F5F8;
+          </div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item">
+            &#x1F5F8;
+          </div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item popup__progress-item_active">3</div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item">4</div>
+        </div>
+        <div class="quiz">
+          <h5 class="quiz__question">What kind of characters do you like?</h5>
+          <div class="quiz__answers">
+            <label class="container">Superheroes
+              <input type="radio" name="option3" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Time travelers
+              <input type="radio" name="option3" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Mutants
+              <input type="radio" name="option3" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <button class="popup__button" id="popupButton3" disabled="true">Next</button>
+        </div>
+      </div>
+      <!-- Question 4-->
+      <div class="popup__content">
+        <h2 class="popup__title">What description best fits you?</h2>
+        <p class="popup__subtitle">By doing this, we can tailor your experience to your preferences.</p>
+        <div class="popup__progress">
+          <div class="popup__progress-item">
+            &#x1F5F8;
+          </div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item">
+            &#x1F5F8;
+          </div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item">
+            &#x1F5F8;
+          </div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item popup__progress-item_active">4</div>
+        </div>
+        <div class="quiz">
+          <h5 class="quiz__question">Choose one series that you liked</h5>
+          <div class="quiz__answers quiz__answers_images">
+            <label class="container container_images">
+              <img src="https://th.bing.com/th/id/OIP.pNlTFkxtPD8XTKw13qqNJQHaK-?pid=ImgDet&rs=1" alt="movie">
+              <input type="radio" name="option4" class="quiz__input">
+              <span class="checkmark checkmark_images"></span>
+            </label>
+            <label class="container container_images">
+              <img src="https://th.bing.com/th/id/OIP.j9gSPKdfACS7RjMu9H08ugHaLH?pid=ImgDet&rs=1" alt="movie">
+              <input type="radio" name="option5" class="quiz__input">
+              <span class="checkmark checkmark_images"></span>
+            </label>
+            <label class="container container_images">
+              <img src="https://th.bing.com/th/id/R.e08a111d661dd83e55e0ad19c1de0f1b?rik=T8lYPSwtrGzvfg&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fthe-office-season-seven-dvd-cover.jpg&ehk=Rd0gLUa6fGjp5IWbL7TZaHT29DbwWecdqTi7KnmY5yY%3d&risl=&pid=ImgRaw&r=0" alt="movie">
+              <input type="radio" name="option4" class="quiz__input">
+              <span class="checkmark checkmark_images"></span>
+            </label>
+          </div>
+          <button class="popup__button" id="popupButton4" disabled="true">Next</button>
+        </div>
+      </div>
+      <!-- Final Slide -->
+      <div class="popup__content popup__content6">
+        <h2 class="popup__title">Great! Here is the perfect series for you: ....</h2>
+        <img src="https://images.unsplash.com/photo-1635616208778-3d034a225ac6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="movies" class="popup__final-img">
+      </div>
+    </div>
+    <script>
+      const overlay = document.querySelector(".overlay");
+      const popup = document.querySelector(".popup");
+      const cross = popup.querySelector(".popup__close");
+
+      function openPopup() {
+        overlay.addEventListener("click", closePopup);
+        cross.addEventListener("click", closePopup);
+        overlay.classList.add("overlay_visible");
+        popup.classList.add("popup_visible");
+      }
+
+      openPopup();
+
+      function closePopup() {
+        overlay.classList.remove("overlay_visible");
+        popup.classList.remove("popup_visible");
+        document.body.classList.remove("body_blur");
+        overlay.removeEventListener("click", closePopup);
+        cross.removeEventListener("click", closePopup);
+      }
+
+      // Опросник
+      const quizes = document.querySelectorAll(".quiz");
+      const questions = document.querySelectorAll(".popup__content");
+
+      quizes.forEach((quiz) => {
+        const options = quiz.querySelectorAll(".quiz__input");
+        const nextButton = quiz.querySelector(".popup__button");
+        options.forEach((option) => {
+          option.addEventListener("click", () => {
+            nextButton.disabled = false;
+          });
+        });
+      });
+
+      questions.forEach((question, i) => {
+        const button = document.getElementById(`popupButton${i + 1}`);
+        button.addEventListener("click", () => {
+          question.classList.remove("question-visible");
+          if (questions[i + 1]) {
+            questions[i + 1].classList.add("question-visible");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

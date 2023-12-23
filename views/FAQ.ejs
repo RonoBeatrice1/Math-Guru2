@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ</title>
+    <link rel="shortcut icon" href="https://e7.pngegg.com/pngimages/541/631/png-clipart-mathematics-logo-word-problem-algebra-black-dandelion-logo-algebra.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Zeyada&display=swap"
+      rel="stylesheet"
+    />
+    <script
+    src="https://kit.fontawesome.com/24b7b4270b.js"
+    crossorigin="anonymous"
+  ></script>
+    <style>
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      *,
+      *::after,
+      *::before {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      *::after,
+      *::before {
+        content: "";
+      }
+
+      body {
+        font-size: 100%;
+        font-family: "Dosis", sans-serif;
+        font-weight: 900;
+        color: #4e5359;
+        background-color: #ececec;
+      }
+      body::after {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(78, 83, 89, 0.8);
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+        -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+        transition: opacity 0.3s 0s, visibility 0s 0.3s;
+      }
+      body.cd-overlay::after {
+        visibility: visible;
+        opacity: 1;
+        -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+        -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+        transition: opacity 0.3s 0s, visibility 0s 0s;
+      }
+      @media only screen and (min-width: 768px) {
+        body::after {
+          display: none;
+        }
+      }
+
+      a {
+        color: darkred;
+        text-decoration: none;
+      }
+      header {
+        position: relative;
+        height: 180px;
+        line-height: 180px;
+        text-align: center;
+        background-color: #6495ce;
+      }
+      header h1 {
+        color: #ffffff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 20px;
+        font-size: 1.25rem;
+      }
+      @media only screen and (min-width: 1024px) {
+        header {
+          height: 240px;
+          line-height: 240px;
+        }
+        header h1 {
+          font-size: 36px;
+          font-size: 2.25rem;
+          font-weight: 300;
+        }
+      }
+
+      .cd-faq {
+        width: 90%;
+        max-width: 1024px;
+        margin: 2em auto;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+      }
+      .cd-faq:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      @media only screen and (min-width: 768px) {
+        .cd-faq {
+          position: relative;
+          margin: 4em auto;
+          box-shadow: none;
+        }
+      }
+      .cd-faq-categories {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+      }
+      .cd-faq-categories a {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        height: 50px;
+        line-height: 50px;
+        padding: 0 28px 0 16px;
+        background-color: black;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #ffffff;
+        white-space: nowrap;
+        border-bottom: 1px solid #555b61;
+        text-overflow: ellipsis;
+      }
+      .cd-faq-categories a::before,
+      .cd-faq-categories a::after {
+        /* plus icon on the right */
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        display: inline-block;
+        height: 1px;
+        width: 10px;
+        background-color: black;
+      }
+      .cd-faq-categories a::after {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+      .cd-faq-categories li:last-child a {
+        border-bottom: none;
+      }
+      @media only screen and (min-width: 768px) {
+        .cd-faq-categories {
+          width: 20%;
+          float: left;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+        }
+        .cd-faq-categories a {
+          font-size: 13px;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          padding-left: 24px;
+          padding: 0 24px;
+          -webkit-transition: background 0.2s, padding 0.2s;
+          -moz-transition: background 0.2s, padding 0.2s;
+          transition: background 0.2s, padding 0.2s;
+        }
+        .cd-faq-categories a::before,
+        .cd-faq-categories a::after {
+          display: none;
+        }
+        .no-touch .cd-faq-categories a:hover {
+          background: #555b61;
+        }
+        .no-js .cd-faq-categories {
+          width: 100%;
+          margin-bottom: 2em;
+        }
+      }
+      @media only screen and (min-width: 1024px) {
+        .cd-faq-categories {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 200px;
+          z-index: 2;
+        }
+        .cd-faq-categories a::before {
+          /* decorative rectangle on the left visible for the selected item */
+          display: block;
+          top: 0;
+          right: auto;
+          left: 0;
+          height: 100%;
+          width: 3px;
+          background-color: #42464b;
+          opacity: 0;
+          -webkit-transition: opacity 0.2s;
+          -moz-transition: opacity 0.2s;
+          transition: opacity 0.2s;
+        }
+        .cd-faq-categories .selected {
+          background: #42464b !important;
+        }
+        .cd-faq-categories .selected::before {
+          opacity: 1;
+        }
+        .cd-faq-categories.is-fixed {
+          /* top and left value assigned in jQuery */
+          position: fixed;
+        }
+        .no-js .cd-faq-categories {
+          position: relative;
+        }
+      }
+
+      .cd-faq-items {
+        position: fixed;
+        height: 100%;
+        width: 90%;
+        top: 0;
+        right: 0;
+        background: #ffffff;
+        padding: 0 5% 1em;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 1;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-transform: translateZ(0) translateX(100%);
+        -moz-transform: translateZ(0) translateX(100%);
+        -ms-transform: translateZ(0) translateX(100%);
+        -o-transform: translateZ(0) translateX(100%);
+        transform: translateZ(0) translateX(100%);
+        -webkit-transition: -webkit-transform 0.3s;
+        -moz-transition: -moz-transform 0.3s;
+        transition: transform 0.3s;
+      }
+      .cd-faq-items.slide-in {
+        -webkit-transform: translateZ(0) translateX(0%);
+        -moz-transform: translateZ(0) translateX(0%);
+        -ms-transform: translateZ(0) translateX(0%);
+        -o-transform: translateZ(0) translateX(0%);
+        transform: translateZ(0) translateX(0%);
+      }
+      .no-js .cd-faq-items {
+        position: static;
+        height: auto;
+        width: 100%;
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+      }
+
+      p {
+        color: black;
+      }
+
+      /* footer */
+#footer {
+  font-family: "Dosis", sans-serif;
+  width: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+h3.left {
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-align: left;
+}
+
+h3.center {
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.about ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.card-f ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.about,
+.card-f li {
+  color: black;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 22px;
+  list-style-type: none;
+  text-align: left;
+}
+
+#utility-links {
+  width: 50%;
+  height: 150px;
+  background-color: #fff;
+  margin: 40px auto 0 auto;
+}
+
+.rectangle {
+  width: 1px;
+  height: 100px;
+  background: #d8d8d8;
+  margin: 0 30px 0 0;
+  float: left;
+  display: block;
+}
+
+.help {
+  width: 30%;
+  height: 100px;
+  float: left;
+  margin: 0;
+  display: block;
+}
+
+.help-img-icon {
+  float: left;
+  margin: 0 5px 0 0;
+}
+
+.about {
+  width: 30%;
+  height: 100px;
+  float: left;
+  margin: 0;
+  display: block;
+}
+
+.card-f {
+  width: 30%;
+  height: 100px;
+  float: left;
+  margin: 0;
+  display: block;
+}
+
+#newsletter-social {
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#social {
+  width: 35%;
+  margin: 80px 0 0 0;
+  display: inline;
+  padding-right: 50px;
+}
+
+/* Copyright Styling */
+
+/* .rectangle-horiz {
+    width: 100%;
+    height: 2px;
+    background: #d8d8d8;
+    margin: 170px 0 0 0;
+  } */
+
+#copyright {
+  font-family: Mallory, Sans-Serif;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.copy {
+  color: black;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  margin-left: 20px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+#footer a:link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#footer a:visited {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#footer a:hover {
+  color: darkred;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#footer a:active {
+  color: darkred;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-arrow {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-10%);
+      }
+
+      .back-arrow a {
+        text-decoration: none;
+        font-size: 30px;
+        color: black;
+        display: flex;
+        align-items: center;
+      }
+
+      .back-arrow i {
+        font-size: 20px;
+        margin-right: 7px;
+      }
+
+      @media only screen and (min-width: 768px) {
+        .cd-faq-items {
+          position: static;
+          height: auto;
+          width: 78%;
+          float: right;
+          overflow: visible;
+          -webkit-transform: translateZ(0) translateX(0);
+          -moz-transform: translateZ(0) translateX(0);
+          -ms-transform: translateZ(0) translateX(0);
+          -o-transform: translateZ(0) translateX(0);
+          transform: translateZ(0) translateX(0);
+          padding: 0;
+          background: transparent;
+        }
+      }
+      @media only screen and (min-width: 1024px) {
+        .cd-faq-items {
+          float: none;
+          width: 100%;
+          padding-left: 220px;
+        }
+        .no-js .cd-faq-items {
+          padding-left: 0;
+        }
+      }
+
+      .cd-close-panel {
+        position: fixed;
+        top: 5px;
+        right: -100%;
+        display: block;
+        height: 40px;
+        width: 40px;
+        overflow: hidden;
+        text-indent: 100%;
+        white-space: nowrap;
+        z-index: 2;
+        /* Force Hardware Acceleration in WebKit */
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-transition: right 0.4s;
+        -moz-transition: right 0.4s;
+        transition: right 0.4s;
+      }
+      .cd-close-panel::before,
+      .cd-close-panel::after {
+        /* close icon in CSS */
+        position: absolute;
+        top: 16px;
+        left: 12px;
+        display: inline-block;
+        height: 3px;
+        width: 18px;
+        background: #6c7d8e;
+      }
+      .cd-close-panel::before {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+      .cd-close-panel::after {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+      .cd-close-panel.move-left {
+        right: 2%;
+      }
+      @media only screen and (min-width: 768px) {
+        .cd-close-panel {
+          display: none;
+        }
+      }
+
+      .cd-faq-group {
+        /* hide group not selected */
+        display: none;
+      }
+      .cd-faq-group.selected {
+        display: block;
+      }
+      .cd-faq-group .cd-faq-title {
+        background: transparent;
+        box-shadow: none;
+        margin: 1em 0;
+      }
+      .no-touch .cd-faq-group .cd-faq-title:hover {
+        box-shadow: none;
+      }
+      .cd-faq-group .cd-faq-title h2 {
+        text-transform: uppercase;
+        font-size: 12px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: black;
+      }
+      .no-js .cd-faq-group {
+        display: block;
+      }
+      @media only screen and (min-width: 768px) {
+        .cd-faq-group {
+          /* all groups visible */
+          display: block;
+        }
+        .cd-faq-group > li {
+          background: #ffffff;
+          margin-bottom: 6px;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+          -webkit-transition: box-shadow 0.2s;
+          -moz-transition: box-shadow 0.2s;
+          transition: box-shadow 0.2s;
+        }
+        .no-touch .cd-faq-group > li:hover {
+          box-shadow: 0 1px 10px rgba(108, 125, 142, 0.3);
+        }
+        .cd-faq-group .cd-faq-title {
+          margin: 2em 0 1em;
+        }
+        .cd-faq-group:first-child .cd-faq-title {
+          margin-top: 0;
+        }
+      }
+
+      .cd-faq-trigger {
+        position: relative;
+        display: block;
+        margin: 1.6em 0 0.4em;
+        line-height: 1.2;
+      }
+      @media only screen and (min-width: 768px) {
+        .cd-faq-trigger {
+          font-size: 24px;
+          font-size: 1.5rem;
+          font-weight: 300;
+          margin: 0;
+          padding: 24px 72px 24px 24px;
+        }
+        .cd-faq-trigger::before,
+        .cd-faq-trigger::after {
+          /* arrow icon on the right */
+          position: absolute;
+          right: 24px;
+          top: 50%;
+          height: 2px;
+          width: 13px;
+          background: darkred;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          -webkit-transition-property: -webkit-transform;
+          -moz-transition-property: -moz-transform;
+          transition-property: transform;
+          -webkit-transition-duration: 0.2s;
+          -moz-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+        }
+        .cd-faq-trigger::before {
+          -webkit-transform: rotate(45deg);
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+          right: 32px;
+        }
+        .cd-faq-trigger::after {
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+        }
+        .content-visible .cd-faq-trigger::before {
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+        }
+        .content-visible .cd-faq-trigger::after {
+          -webkit-transform: rotate(45deg);
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+
+      .cd-faq-content p {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 1.4;
+        color: #6c7d8e;
+      }
+      @media only screen and (min-width: 768px) {
+        .cd-faq-content {
+          display: none;
+          padding: 0 24px 30px;
+        }
+        .cd-faq-content p {
+          line-height: 1.6;
+        }
+        .no-js .cd-faq-content {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="cd-faq">
+      <ul class="cd-faq-categories">
+        <li>
+          <a class="selected" href="#basics">Introduction and Overview</a>
+        </li>
+        <li><a href="#usage">usage and Access</a></li>
+        <li><a href="#content">Content and Featuress</a></li>
+        <li><a href="#progress">Progress Tracking and Feedback</a></li>
+        <li><a href="#subscription">Subscription and Cost</a></li>
+        <li><a href="#community">Community and Support</a></li>
+      </ul>
+
+      <div class="cd-faq-items">
+        <ul id="basics" class="cd-faq-group">
+          <li class="cd-faq-title"><h2>Introduction and Overview</h2></li>
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >What is MathGuru, and how can it help me with Mathematics?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                MathGuru is an online learning platform that provides
+                educational resources to students to improve their understanding
+                of Mathematics. It offers video lessons, interactive activities,
+                and practice exercises to make learning math engaging and
+                effective.
+              </p>
+            </div>
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Is MathGuru suitable for all grade levels, from elementary to
+              high school?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                Yes, MathGuru is designed to cater to students of all grade
+                levels, from elementary school to high school. The platform
+                offers a wide range of topics and difficulty levels to
+                accommodate various learning needs.
+              </p>
+            </div>
+           
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >What topics in Mathematics does MathGuru cover?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                MathGuru covers a comprehensive range of topics in Mathematics,
+                including arithmetic, algebra, geometry, trigonometry, calculus,
+                statistics, and more. It also offers lessons on problem-solving
+                strategies and real-life applications of math.
+              </p>
+            </div>
+          </li>
+        </ul>
+        
+
+        <ul id="usage" class="cd-faq-group">
+          <li class="cd-faq-title"><h2>Usage and Access</h2></li>
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >What is MathGuru, and how can it help me with Mathematics?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                MathGuru is an online learning platform that provides
+                educational resources to students to improve their understanding
+                of Mathematics. It offers video lessons, interactive activities,
+                and practice exercises to make learning math engaging and
+                effective.
+              </p>
+            </div>
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Is MathGuru accessible on mobile devices, such as smartphones and
+              tablets?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                Yes, MathGuru is designed to be fully responsive and accessible
+                on various devices, including smartphones, tablets, laptops, and
+                desktop computers. You can access MathGuru on the go using your
+                mobile browser or the dedicated app, if available.
+              </p>
+            </div>
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Are the MathGuru lessons available in multiple languages?</a
+            >
+
+            <div class="cd-faq-content">
+              <p>
+                At the moment, MathGuru primarily offers lessons in the English
+                language. However, we are actively working on translating our
+                content into multiple languages to reach a more diverse
+                audience.
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <ul id="content" class="cd-faq-group">
+          <li class="cd-faq-title"><h2>Content and Features</h2></li>
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Are the MathGuru lessons taught by real teachers or automated?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                The MathGuru lessons are created by a team of experienced math
+                educators. While the lessons may be in video format, each one is
+                carefully crafted by qualified teachers to ensure clarity and
+                accuracy.
+              </p>
+            </div>
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Can MathGuru help me with my math homework and assignments?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                Absolutely! MathGuru provides step-by-step explanations and
+                solutions to various math problems. You can also find practice
+                exercises that are similar to typical homework questions to
+                reinforce your understanding.
+              </p>
+            </div>
+           
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Can MathGuru help me prepare for standardized tests and exams?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                Yes, MathGuru is an excellent resource for test preparation. It
+                offers targeted lessons and practice questions to help you
+                review specific topics that commonly appear in standardized
+                tests and exams.
+              </p>
+            </div>
+           
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Can I track my learning progress and see how I have improved over
+              time?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                Yes, MathGuru provides a comprehensive progress tracking feature
+                that allows you to monitor your learning journey. You can view
+                your quiz scores, completed lessons, and overall performance.
+                Tracking your progress can help you stay motivated and identify
+                areas where you have improved over time.
+              </p>
+            </div>
+          
+          </li>
+        </ul>
+      
+        <ul id="progress" class="cd-faq-group">
+          <li class="cd-faq-title"><h2>Progress Tracking and Feedback</h2></li>
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >How does MathGuru track my progress, and will I receive
+              personalized feedback?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                MathGuru uses an intelligent tracking system to monitor your
+                progress as you complete lessons and quizzes. Based on your
+                performance, you will receive personalized feedback and
+                recommendations to focus on areas that need improvement.
+              </p>
+            </div>
+          
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Are there interactive quizzes or practice exercises to test my
+              understanding of the concepts?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                Yes, MathGuru provides interactive quizzes and practice
+                exercises at the end of each lesson to assess your comprehension
+                of the concepts. These quizzes can help you evaluate your
+                learning and identify areas where you might need additional
+                practice.
+              </p>
+            </div>
+          
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Can MathGuru help me improve my math problem-solving skills?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                Certainly! MathGuru not only teaches you mathematical concepts
+                but also emphasizes problem-solving strategies. You'll learn how
+                to approach and tackle various math problems effectively.
+              </p>
+            </div>
+           
+          </li>
+        </ul>
+      
+        <ul id="subscription" class="cd-faq-group">
+          <li class="cd-faq-title"><h2>Subscription and Cost</h2></li>
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0">
+              How much does MathGuru cost, and what are the available
+              subscription plans?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                The pricing and available subscription plans for MathGuru are
+                displayed on our website. We offer different subscription
+                durations, such as monthly, quarterly, and annual plans, each
+                with its respective cost.
+              </p>
+            </div>
+           
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Is there a free trial period to explore MathGuru before
+              subscribing?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                Yes, we do offer a free trial period for new users. During this
+                trial period, you'll have access to a selection of free lessons
+                and resources to explore what MathGuru has to offer.
+              </p>
+            </div>
+            
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >How do I cancel my MathGuru subscription if needed?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                To cancel your MathGuru subscription, you can log in to your
+                account, navigate to the "Subscription" section, and follow the
+                provided instructions for cancellation. If you encounter any
+                issues, you can also reach out to our support team for
+                assistance.
+              </p>
+            </div>
+            
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >What are the available subscription plans, and how much do they
+              cost?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                MathGuru offers three subscription plans: Basic Plan: $9.99 per
+                month Standard Plan: $19.99 per month Premium Plan: $29.99 per
+                month Each plan comes with different levels of access to
+                comprehensive math lessons, interactive quizzes, progress
+                tracking, and personalized feedback from instructors. You can
+                choose the plan that best fits your needs and budget.
+              </p>
+            </div>
+           
+          </li>
+        </ul>
+        
+
+        <ul id="community" class="cd-faq-group">
+          <li class="cd-faq-title"><h2>Community and Support</h2></li>
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Is there a community or forum where I can ask questions and
+              interact with other students?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                Yes, MathGuru has a vibrant community forum where you can post
+                your math-related questions, participate in discussions, and
+                interact with other students. It's a great place to seek help
+                and engage with like-minded learners.
+              </p>
+            </div>
+           
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Does MathGuru offer one-on-one tutoring or live classes?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                At the moment, MathGuru primarily focuses on self-paced learning
+                through pre-recorded video lessons and interactive quizzes.
+                However, we are exploring options for live classes and
+                one-on-one tutoring in the future.
+              </p>
+            </div>
+           
+          </li>
+
+          <li class="question">
+            <a class="cd-faq-trigger" href="#0"
+              >Are there any success stories or testimonials from other students
+              who have benefited from MathGuru?</a
+            >
+            <div class="cd-faq-content">
+              <p>
+                Yes, we have received positive feedback and testimonials from
+                many students who have improved their math skills and confidence
+                with the help of MathGuru. You can find some of these success
+                stories and testimonials on our website.
+              </p>
+            </div>
+           
+          </li>
+        </ul>
+      
+      </div>
+     
+      <a href="#0" class="cd-close-panel">Close</a>
+    </section>
+    <div class="back-arrow">
+      <!-- <a href="javascript:history.go(-1)">
+        <i class="fas fa-arrow-left" style="color: #000000"></i> Back
+      </a> -->
+      <a href="/courses">
+        <i class="fas fa-arrow-left" style="color: #000000"></i> Back
+      </a>
+    </div>
+
+    <footer id="footer">
+      <div id="utility-links">
+    
+       <div class="help">
+       <ul>
+         <h3 class="left">About Us</h3>
+         <p>MathGuru: Your trusted source for quality math education. Join us and excel in math with confidence!</p>
+         </div>
+     
+      
+        <div class="rectangle"></div>
+    
+       <div class="about">
+            <ul>
+              <h3 class="left">Company</h3>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Educators</a></li>
+          <li><a href="#">Contacts</a></li>
+           </ul>
+           </div>
+      
+        <div class="rectangle"></div>
+      
+      <div class="card-f">
+            <ul>
+              <h3 class="left">Products</h3>
+              <li><a href="#">Programs</a></li>
+              <li><a href="#">Testimonials</a></li>
+           </ul>
+       </div>
+    </div>  
+      
+    <div id="newsletter-social">      
+     <div id="social">
+        <a href="#" target="_blank">
+        <img width="34" height="34" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"></a></img>
+    
+        <a href="#" target="_blank">
+        <img width="34" height="34" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469457641/twitter_fu5ejk.svg"></a></img>
+    
+        <a href="#" target="_blank">
+        <img width="34" height="34" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469457641/pinterest_kahh1i.svg"></a></img>
+    
+        <a href="#" target="_blank">
+        <img width="34" height="34" src="https://res.cloudinary.com/cloudinary-account/image/upload/v1469457641/youtube_xrntt3.svg"></a></img>
+    
+        <a href="#" target="_blank">
+        <img width="34" height="34" src="https://cdn.pixabay.com/photo/2016/08/09/17/52/instagram-1581266_640.jpg"></a></img>
+    
+      </div>  
+    </div>  
+         
+    <div class="rectangle-horiz"></div>
+    
+    <div id="copyright">
+    <ul>
+      <li class="copy">© 2023 MathGuru All Rights Reserved.</li>
+    
+      <li class="copy">Privacy Policy | Terms + Conditions </li>
+      
+    </div> 
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var MqM = 768,
+          MqL = 1024;
+
+        var faqsSections = document.querySelectorAll(".cd-faq-group"),
+          faqTrigger = document.querySelectorAll(".cd-faq-trigger"),
+          faqsContainer = document.querySelector(".cd-faq-items"),
+          faqsCategoriesContainer =
+            document.querySelector(".cd-faq-categories"),
+          faqsCategories = faqsCategoriesContainer.querySelectorAll("a"),
+          closeFaqsContainer = document.querySelector(".cd-close-panel");
+
+        // Select a faq section
+        faqsCategories.forEach(function (category) {
+          category.addEventListener("click", function (event) {
+            event.preventDefault();
+            var selectedHref = this.getAttribute("href"),
+              target = document.querySelector(selectedHref);
+
+            if (window.innerWidth < MqM) {
+              faqsContainer.scrollTop = 0;
+              faqsContainer.classList.add("slide-in");
+              faqsContainer.querySelector("ul").classList.remove("selected");
+              faqsContainer
+                .querySelector(selectedHref)
+                .classList.add("selected");
+              closeFaqsContainer.classList.add("move-left");
+              document.body.classList.add("cd-overlay");
+            } else {
+              window.scrollTo({
+                top: target.offsetTop - 20,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // Close faq lateral panel - mobile only
+        document.body.addEventListener("click", function (event) {
+          if (
+            event.target === document.body.querySelector(".cd-overlay") ||
+            event.target.classList.contains("cd-close-panel")
+          ) {
+            closePanel(event);
+          }
+        });
+
+        faqsContainer.addEventListener("swiperight", function (event) {
+          closePanel(event);
+        });
+
+        // Show faq content clicking on faqTrigger
+        faqTrigger.forEach(function (trigger) {
+          trigger.addEventListener("click", function (event) {
+            event.preventDefault();
+            var faqContent = this.nextElementSibling;
+            faqContent.style.display =
+              faqContent.style.display === "none" ? "block" : "none";
+            this.parentNode.classList.toggle("content-visible");
+          });
+        });
+
+        // Update category sidebar while scrolling
+        window.addEventListener("scroll", function () {
+          if (window.innerWidth > MqL) {
+            !window.requestAnimationFrame
+              ? updateCategory()
+              : window.requestAnimationFrame(updateCategory);
+          }
+        });
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth <= MqL) {
+            faqsCategoriesContainer.classList.remove("is-fixed");
+            faqsCategoriesContainer.style.cssText = "";
+          }
+          if (faqsCategoriesContainer.classList.contains("is-fixed")) {
+            faqsCategoriesContainer.style.left =
+              faqsContainer.offsetLeft + "px";
+          }
+        });
+
+        function closePanel(e) {
+          e.preventDefault();
+          faqsContainer.classList.remove("slide-in");
+          var faqItems = faqsContainer.querySelectorAll("li");
+          faqItems.forEach(function (item) {
+            item.style.display = "block";
+          });
+          closeFaqsContainer.classList.remove("move-left");
+          document.body.classList.remove("cd-overlay");
+        }
+
+        function updateCategory() {
+          updateCategoryPosition();
+          updateSelectedCategory();
+        }
+
+        function updateCategoryPosition() {
+          var top = document.querySelector(".cd-faq").offsetTop,
+            height =
+              document.querySelector(".cd-faq").offsetHeight -
+              document.querySelector(".cd-faq-categories").offsetHeight,
+            margin = 20;
+          if (
+            top - margin <= window.scrollY &&
+            top - margin + height > window.scrollY
+          ) {
+            var leftValue = faqsCategoriesContainer.offsetLeft,
+              widthValue = faqsCategoriesContainer.offsetWidth;
+            faqsCategoriesContainer.classList.add("is-fixed");
+            faqsCategoriesContainer.style.left = leftValue + "px";
+            faqsCategoriesContainer.style.top = margin + "px";
+            faqsCategoriesContainer.style.cssText +=
+              "transform: translateZ(0); -moz-transform: translateZ(0); -webkit-transform: translateZ(0); -ms-transform: translateZ(0); -o-transform: translateZ(0);";
+          } else if (top - margin + height <= window.scrollY) {
+            var delta = top - margin + height - window.scrollY;
+            faqsCategoriesContainer.style.cssText +=
+              "transform: translateZ(0) translateY(" +
+              delta +
+              "px); -moz-transform: translateZ(0) translateY(" +
+              delta +
+              "px); -webkit-transform: translateZ(0) translateY(" +
+              delta +
+              "px); -ms-transform: translateZ(0) translateY(" +
+              delta +
+              "px); -o-transform: translateZ(0) translateY(" +
+              delta +
+              "px);";
+          } else {
+            faqsCategoriesContainer.classList.remove("is-fixed");
+            faqsCategoriesContainer.style.cssText += "left: 0; top: 0;";
+          }
+        }
+
+        function updateSelectedCategory() {
+          faqsSections.forEach(function (section) {
+            var actual = section,
+              margin = parseInt(
+                document
+                  .querySelector(".cd-faq-title:nth-child(2)")
+                  .style.marginTop.replace("px", "")
+              ),
+              activeCategory = document.querySelector(
+                '.cd-faq-categories a[href="#' + actual.id + '"]'
+              ),
+              topSection = activeCategory.parentNode.isEqualNode(
+                activeCategory.parentNode.parentNode.firstElementChild
+              )
+                ? 0
+                : Math.round(actual.offsetTop);
+
+            if (
+              topSection - 20 <= window.scrollY &&
+              Math.round(actual.offsetTop) + actual.offsetHeight + margin - 20 >
+                window.scrollY
+            ) {
+              activeCategory.classList.add("selected");
+            } else {
+              activeCategory.classList.remove("selected");
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

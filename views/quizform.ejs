@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz-Form</title>
+  </head>
+  <body>
+    <form action="/submit-quiz" method="POST">
+      <label for="user_id">User ID:</label>
+      <input type="number" name="user_id" id="user_id" /><br />
+
+      <label for="course_id">Course ID:</label>
+      <input type="number" name="course_id" id="course_id" /><br />
+
+      <label for="level_id">Level ID:</label>
+      <input type="number" name="level_id" id="level_id" /><br />
+
+      <label for="score">Score:</label>
+      <input type="number" name="score" id="score" /><br />
+
+      <label for="timestamp">Timestamp:</label>
+      <input type="datetime-local" name="timestamp" id="timestamp" /><br />
+
+      <button type="submit">Submit Quiz</button>
+    </form>
+
+    <script>
+      // Custom validation function for courseId and levelId (check if they are not empty strings)
+      document
+        .getElementById("quizForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Collect quiz data from the form
+          const formData = new FormData(this);
+
+          // Send the quiz data to the server using fetch API
+          fetch("/submit-quiz", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Server response:", data);
+              //  Success message to the user if data.message is "Quiz submission successful"
+              if (data.message === "Quiz submission successful") {
+                alert("Quiz submitted successfully!");
+              }
+            })
+            .catch((error) => {
+              console.error("Error submitting quiz:", error);
+            });
+        });
+    </script>
+  </body>
+</html>
