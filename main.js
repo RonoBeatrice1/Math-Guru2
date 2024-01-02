@@ -265,11 +265,11 @@ app.get("/courses/:courseId/levels/:levelId/quiz", (req, res) => {
 
   const quizQuery = `
     SELECT q.question_text, o.option_text
-    FROM Questions q
-    INNER JOIN Options o ON q.question_id = o.question_id
+    FROM questions q
+    INNER JOIN options o ON q.question_id = o.question_id
     WHERE q.course_id = ? AND q.question_text IN (
       SELECT DISTINCT question_text
-      FROM Questions
+      FROM questions
       WHERE course_id = ?
     )
   `;
@@ -307,6 +307,7 @@ app.get("/courses/:courseId/levels/:levelId/quiz", (req, res) => {
     });
   });
 });
+
 
 const QUIZ_SCORE_TABLE = "quizScores";
 
